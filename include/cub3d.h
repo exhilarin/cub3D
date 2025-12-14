@@ -10,3 +10,50 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef CUB3D_H
+# define CUB3D_H
+
+# include "../library/libft/libft.h"
+# include "../library/gnl/get_next_line.h"
+//# include "../library/minilibx-linux/mlx.h"
+# include <unistd.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <fcntl.h>
+
+typedef struct s_texture
+{
+    char    *north;
+    char    *south;
+    char    *west;
+    char    *east;
+    int     floor_color;
+    int     ceiling_color;
+    int     c_count;
+}               t_texture;
+
+typedef struct s_map
+{
+    char    **grid;
+    int     width;
+    int     height;
+    int     player_count;
+    char    player_dir;
+    double  player_x;
+    double  player_y;
+}               t_map;
+
+typedef struct s_game
+{
+    t_texture   textures;
+    t_map       map;
+    void        *mlx;
+    void        *win;
+    int         map_fd;
+    char        *map_path;
+}               t_game;
+
+void    ft_perror(const char *str);
+void    init_data(t_game *game);
+
+#endif

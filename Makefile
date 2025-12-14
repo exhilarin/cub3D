@@ -14,7 +14,16 @@ LIBFT       = $(LIBFT_DIR)/libft.a
 MLX         = $(MLX_DIR)/libmlx.a
 
 SRCS = \
-	src/main.c
+	src/main.c \
+	src/parsing/parse_file.c \
+	src/parsing/parse_textures.c \
+	src/parsing/parse_colors.c \
+	src/parsing/parse_map.c \
+	src/parsing/validate_map.c \
+	src/utils/error.c \
+	src/utils/free.c \
+	src/utils/utils.c \
+	src/utils/data_init.c
 
 OBJS = $(SRCS:src/%.c=$(BUILD_DIR)/%.o)
 
@@ -27,7 +36,7 @@ BLUE        = \033[0;34m
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT) $(MLX)
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) $(MLX_FLAGS) -o $@
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) $(MLXFLAGS) -o $@
 	@echo "$(GREEN)✅ Build complete: $(NAME)$(RESET)"
 
 $(BUILD_DIR)/%.o: src/%.c
