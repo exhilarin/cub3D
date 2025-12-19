@@ -3,15 +3,12 @@ NAME        = cub3D
 BUILD_DIR   = build
 INCLUDE_DIR = include
 LIBFT_DIR   = library/libft
-MLX_DIR     = library/minilibx-linux
 GNL_DIR     = library/gnl
 
 CC          = cc
 CFLAGS      = -Wall -Wextra -Werror -I$(INCLUDE_DIR) -I$(LIBFT_DIR) -I$(GNL_DIR)
-MLXFLAGS   = -lX11 -lXext -lm
 
 LIBFT       = $(LIBFT_DIR)/libft.a
-MLX         = $(MLX_DIR)/libmlx.a
 
 SRCS = \
 	src/main.c \
@@ -25,7 +22,12 @@ SRCS = \
 	src/utils/utils.c \
 	src/utils/data_init.c
 
+GNL_SRCS = \
+	library/gnl/get_next_line.c \
+	library/gnl/get_next_line_utils.c
+
 OBJS = $(SRCS:src/%.c=$(BUILD_DIR)/%.o)
+GNL_OBJS = $(GNL_SRCS:library/gnl/%.c=$(BUILD_DIR)/gnl/%.o)
 
 RESET       = \033[0m
 RED         = \033[0;31m
@@ -35,8 +37,8 @@ BLUE        = \033[0;34m
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT) $(MLX)
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) $(MLXFLAGS) -o $@
+$(NAME): $(OBJS) $(GNL_OBJS) $(LIBFT)
+	@$(CC) $(CFLAGS) $(OBJS) $(GNL_OBJS) $(LIBFT) -o $@
 	@echo "$(GREEN)✅ Build complete: $(NAME)$(RESET)"
 
 $(BUILD_DIR)/%.o: src/%.c
@@ -44,16 +46,19 @@ $(BUILD_DIR)/%.o: src/%.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo "$(BLUE)Compiled:$(RESET) $<"
 
+$(BUILD_DIR)/gnl/%.o: library/gnl/%.c
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@echo "$(BLUE)Compiled:$(RESET) $<"
+
 $(LIBFT):
 	@$(MAKE) -s -C $(LIBFT_DIR)
 
-$(MLX):
-	@$(MAKE) -s -C $(MLX_DIR)
-
 clean:
 	@rm -rf $(BUILD_DIR)
+	@rm -f $(NAME)
 	@$(MAKE) -s -C $(LIBFT_DIR) clean
-	@echo "$(YELLOW)🧹 Object files removed.$(RESET)"
+	@echo "$(YELLOW)🧹 Object files and program removed.$(RESET)"
 
 fclean: clean
 	@rm -f $(NAME)

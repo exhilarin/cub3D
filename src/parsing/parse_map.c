@@ -12,9 +12,83 @@
 
 #include "../../include/cub3d.h"
 
-/*
-** Harita kısmını parse eder
-** Haritayı 2D array'e dönüştürür
-** Geçerli karakterleri kontrol eder: 0, 1, N, S, E, W, space
-** Oyuncu pozisyonunu bulur
-*/
+static void get_max_width(t_game *game)
+{
+    int i;
+    int len;
+
+    i = 0;
+    game->map.width = 0;
+    while (game->map.grid[i])
+    {
+        len = ft_strlen(game->map.grid[i]);
+        if (len > game->map.width)
+            game->map.width = len;
+        i++;
+    }
+    game->map.height = i;
+}
+
+char *gnl_strjoin(char *s1, char *s2)
+{
+    char *new_str;
+
+    if (!s1)
+        return (ft_strdup(s2));
+    if (!s2)
+        return (s1);
+    new_str = ft_strjoin(s1, s2);
+    free(s1);
+    return (new_str);
+}
+
+static int check_map_is_closed(char *map_str)
+{
+    int i;
+
+    i = 0;
+    if (!map_str)
+        return (1);
+    while (map_str[i])
+    {
+        if (map_str[i] == '\n' && map_str[i + 1] == '\n')
+            return (0);
+        i++;    
+    }
+    return (1);
+}
+
+int parse_map(char *first_line, int fd, t_game *game)
+{
+    char *line;
+    char *map_str;
+    char *temp;
+
+    map_str = ft_strdup(first_line);
+    if (!map_str)
+        return (0);
+    temp = ft_strjoin(map_str, "\n");
+    free(map_str);
+    map_str = temp;
+    if (!map_str)
+        return (0);
+    while (1)
+    {
+        line = get_next_line(fd);
+        if (!line)
+            break ;
+        map_str = gnl_strjoin(map_str, line);
+        free(line);
+    }
+    if (!check_map_is_closed(map_str))
+    {
+        free(map_str);
+        ft_perror("Error\nEmpty line inside map detected\n");
+    }
+    game->map.grid = ft_split(map_str, '\n');
+    free(map_str);
+    if (!game->map.grid)
+        return (0);
+    get_max_width(game);
+    return (1);
+}

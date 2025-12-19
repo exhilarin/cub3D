@@ -12,12 +12,6 @@
 
 #include "../../include/cub3d.h"
 
-/*
-** NO, SO, WE, EA texture path'lerini parse eder
-** Texture dosyalarının var olup olmadığını kontrol eder
-** .xpm uzantısı kontrolü yapar
-*/
-
 static char *get_path(char *line, int i)
 {
     char *path;

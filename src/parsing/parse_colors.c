@@ -62,9 +62,6 @@ static int split_len(char **tab)
     return (len);
 }
 
-//3 string inte çevirip rgb hesapla
-//bitwise ile kaydırma yapıldı
-
 static int calculate_rgb(char **rgb)
 {
     int r;
