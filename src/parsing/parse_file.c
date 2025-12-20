@@ -12,12 +12,6 @@
 
 #include "../../include/cub3d.h"
 
-int is_valid_map_char(char c)
-{
-    return (c == '0' || c == '1' || c == 'N' || c == 'S'
-            || c == 'E' || c == 'W' || c == ' ' || c == '\t');
-}
-
 static int is_map_line(char *line)
 {
     int i;
@@ -38,9 +32,7 @@ static int process_line(char *line, t_game *game)
 {
     int i;
 
-    i = 0;
-    while (line[i] == ' ' || line[i] == '\t')
-        i++;
+    i = skip_whitespace(line);
     if (line [i] == '\0' || line[i] == '\n')
         return (0);
     if (ft_strncmp(&line[i], "NO", 2) == 0 || ft_strncmp(&line[i], "SO", 2) == 0

@@ -29,40 +29,6 @@ static void get_max_width(t_game *game)
     game->map.height = i;
 }
 
-char *gnl_strjoin(char *s1, char *s2)
-{
-    char	*new_str;
-    size_t	i;
-    size_t	j;
-    size_t	len1;
-    size_t	len2;
-
-    if (!s1)
-        return (ft_strdup(s2));
-    if (!s2)
-        return (s1);
-    len1 = ft_strlen(s1);
-    len2 = ft_strlen(s2);
-    new_str = malloc(len1 + len2 + 1);
-    if (!new_str)
-        return (NULL);
-    i = 0;
-    while (i < len1)
-    {
-        new_str[i] = s1[i];
-        i++;
-    }
-    j = 0;
-    while (j < len2)
-    {
-        new_str[i + j] = s2[j];
-        j++;
-    }
-    new_str[i + j] = '\0';
-    free(s1);
-    return (new_str);
-}
-
 static int check_map_is_closed(char *map_str)
 {
     int i;

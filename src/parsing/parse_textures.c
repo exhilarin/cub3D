@@ -18,8 +18,7 @@ static char *get_path(char *line, int i)
     int len;
     int j;
 
-    while (line[i] && (line[i] == ' ' || line[i] == '\t'))
-        i++;
+    i += skip_whitespace(&line[i]);
     len = 0;
     while (line[i + len] && line[i + len] != '\n')
         len++;

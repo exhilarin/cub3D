@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_colors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agedikoglu <agedikoglu@student.42.fr>      +#+  +:+       +#+        */
+/*   By: agedikoglu <agedikog@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/05 00:00:00 by agedikoglu        #+#    #+#             */
-/*   Updated: 2025/12/05 00:00:00 by agedikoglu       ###   ########.fr       */
+/*   Created: 2025/12/05 00:00:00 by agedikog          #+#    #+#             */
+/*   Updated: 2025/12/05 00:00:00 by agedikog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,8 @@ static int check_isdigit(char *str)
 	int i;
 	int found_digit;
 
-	i = 0;
 	found_digit = 0;
-  	while (str[i] && (str[i] == ' ' || str[i] == '\t'))
-		i++;
+	i = skip_whitespace(str);
 	if (!str[i])
 		return (0);
 	while (str[i] && str[i] != '\n') 
@@ -32,21 +30,6 @@ static int check_isdigit(char *str)
 		i++;
 	}
 	return (found_digit);
-}
-
-static void free_split(char **tab) 
-{
-	int i;
-
-	i = 0;
-  	if (!tab)
-		return;
-  	while (tab[i]) 
-	{
-		free(tab[i]);
-		i++;
-  	}
-  	free(tab);
 }
 
 static int split_len(char **tab) 
@@ -79,9 +62,7 @@ void parse_colors(char *line, t_game *game)
 	char **rgb;
 	int color;
 
-	i = 1;
-	while (line[i] == ' ' || line[i] == '\t')
-		i++;
+	i = 1 + skip_whitespace(&line[1]);
 	rgb = ft_split(&line[i], ',');
 	if (!rgb)
 		ft_perror("Error\nMalloc failed in color parsing\n");

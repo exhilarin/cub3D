@@ -32,4 +32,6 @@ int main(int argc, char **argv)
         ft_perror("Error\ninvalid file extension\n");
     init_data(&game);
     parse_file(argv[1], &game);
+    free_game(&game);
+    return (0);
 }
