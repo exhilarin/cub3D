@@ -36,9 +36,8 @@ static char *get_path(char *line, int i)
     return (path);
 }
 
-static void check_dup_texture(char *texture, char *type)
+static void check_dup_texture(char *texture)
 {
-    (void)type;
     if (texture != NULL)
         ft_perror("Error\nDuplicate texture found\n");
 }
@@ -52,25 +51,25 @@ void parse_textures(char *line, t_game *game)
         ft_perror("Error\nMalloc failed in texture parsing\n");
     if (ft_strncmp(line, "NO", 2) == 0)
     {
-        check_dup_texture(game->textures.north, "NO");
+        check_dup_texture(game->textures.north);
         game->textures.north = path;
         game->textures.c_count++;   
     }
     else if (ft_strncmp(line, "SO", 2) == 0)
     {
-        check_dup_texture(game->textures.south, "SO");
+        check_dup_texture(game->textures.south);
         game->textures.south = path;
         game->textures.c_count++;   
     }
     else if (ft_strncmp(line, "WE", 2) == 0)
     {
-        check_dup_texture(game->textures.west, "WE");
+        check_dup_texture(game->textures.west);
         game->textures.west = path;
         game->textures.c_count++;   
     }
     else if (ft_strncmp(line, "EA", 2) == 0)
     {
-        check_dup_texture(game->textures.east, "EA");
+        check_dup_texture(game->textures.east);
         game->textures.east = path;
         game->textures.c_count++;
     }

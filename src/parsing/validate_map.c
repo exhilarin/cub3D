@@ -12,14 +12,6 @@
 
 #include "../../include/cub3d.h"
 
-static int is_valid_char(char c)
-{
-    if (c == '0' || c == '1' || c == ' ' || c == '\t'
-            || c == 'N' || c == 'S' || c == 'E' || c == 'W')
-        return (1);
-    return (0);
-}
-
 static void check_player(t_game *game, int x, int y)
 {
     char c;
@@ -70,7 +62,7 @@ void validate_map(t_game *game)
         x = 0;
         while (game->map.grid[y][x])
         {
-            if (!is_valid_char(game->map.grid[y][x]))
+            if (!is_valid_map_char(game->map.grid[y][x]))
                 ft_perror("Error\nInvalid character in map\n");
             check_player(game, x, y);
             if (game->map.grid[y][x] == '0' ||
