@@ -38,11 +38,9 @@ static char *get_path(char *line, int i)
 
 static void check_dup_texture(char *texture, char *type)
 {
+    (void)type;
     if (texture != NULL)
-    {
-        printf("Error\nDuplicate texture found for: %s\n", type);
-        exit(1);
-    }
+        ft_perror("Error\nDuplicate texture found\n");
 }
 
 void parse_textures(char *line, t_game *game)

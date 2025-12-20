@@ -16,15 +16,14 @@ static int is_valid_char(char c)
 {
     if (c == '0' || c == '1' || c == ' ' || c == '\t'
             || c == 'N' || c == 'S' || c == 'E' || c == 'W')
-    {
         return (1);
-    }
     return (0);
 }
 
 static void check_player(t_game *game, int x, int y)
 {
     char c;
+    
     c = game->map.grid[y][x];
     if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
     {

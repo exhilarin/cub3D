@@ -12,6 +12,28 @@
 
 #include "../../include/cub3d.h"
 
+static int is_map_char(char c)
+{
+    return (c == '0' || c == '1' || c == 'N' || c == 'S'
+            || c == 'E' || c == 'W' || c == ' ' || c == '\t');
+}
+
+static int is_map_line(char *line)
+{
+    int i;
+
+    i = 0;
+    if (line[0] == '\0' || !line)
+        return (0);
+    while (line[i])
+    {
+        if (!is_map_char(line[i]))
+            return (0);
+        i++;
+    }
+    return (1);
+}
+
 static int process_line(char *line, t_game *game)
 {
     int i;
@@ -26,13 +48,29 @@ static int process_line(char *line, t_game *game)
         parse_textures(&line[i], game);
     else if (ft_strncmp(&line[i], "F", 1) == 0 || ft_strncmp(&line[i], "C", 1) == 0)
         parse_colors(&line[i], game);
-    else if ((line[i] == '0' || line[i] == '1'))
+    else if (is_map_line(line))
         return (1);
     else
         ft_perror("Error\nUnknown identifier in map file\n");
     return (0);
 }
- 
+
+static void check_all_elements(t_game *game)
+{
+    if (!game->textures.north)
+        ft_perror("Error\nMissing north texture (NO)\n");
+    if (!game->textures.south)
+        ft_perror("Error\nMissing south texture (SO)\n");
+    if (!game->textures.west)
+        ft_perror("Error\nMissing west texture (WE)\n");
+    if (!game->textures.east)
+        ft_perror("Error\nMissing east texture (EA)\n");
+    if (game->textures.floor_color == -1)
+        ft_perror("Error\nMissing floor color (F)\n");
+    if (game->textures.ceiling_color == -1)
+        ft_perror("Error\nMissing ceiling color (C)\n");    
+}
+
 void parse_file(char *file, t_game *game)
 {
     char *line;
@@ -67,5 +105,6 @@ void parse_file(char *file, t_game *game)
 	close(game->map_fd);
 	if (!map_found)
 		ft_perror("Error\nNo map found in file\n");
+    check_all_elements(game);
 	validate_map(game);
 }

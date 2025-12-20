@@ -22,8 +22,10 @@
 static int check_isdigit(char *str)
 {
     int i;
+    int found_digit;
 
     i = 0;
+    found_digit = 0;
     while (str[i] && (str[i] == ' ' || str[i] == '\t'))
         i++;
     if (!str[i])
@@ -31,10 +33,12 @@ static int check_isdigit(char *str)
     while (str[i] && str[i] != '\n')
     {
         if (!ft_isdigit(str[i]))
+            found_digit = 1;
+        else if (str[i] != ' ' && str[i] != '\t')
             return (0);
         i++;
     }
-    return (1);
+    return (found_digit);
 }
 
 static void free_split(char **tab)
