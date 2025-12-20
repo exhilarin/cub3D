@@ -56,9 +56,8 @@ $(LIBFT):
 
 clean:
 	@rm -rf $(BUILD_DIR)
-	@rm -f $(NAME)
 	@$(MAKE) -s -C $(LIBFT_DIR) clean
-	@echo "$(YELLOW)🧹 Object files and program removed.$(RESET)"
+	@echo "$(YELLOW)🧹 Object files removed.$(RESET)"
 
 fclean: clean
 	@rm -f $(NAME)
