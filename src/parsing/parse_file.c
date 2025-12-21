@@ -16,8 +16,8 @@ static int is_map_line(char *line)
 {
     int i;
 
-    i = 0;
-    if (!line || line[0] == '\0')
+    i = skip_whitespace(line);
+    if (!line || line[i] == '\0')
         return (0);
     while (line[i])
     {
@@ -73,7 +73,7 @@ void parse_file(char *file, t_game *game)
     if (game->map_fd < 0)
         ft_perror("Error\nCould not open map file\n");
     map_found = 0;
-    while (1)
+	while (1)
 	{
 		line = get_next_line(game->map_fd);
 		if (!line)
