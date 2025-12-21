@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agedikoglu <agedikoglu@student.42.fr>      +#+  +:+       +#+        */
+/*   By: agedikog <agedikog@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/05 00:00:00 by agedikoglu        #+#    #+#             */
-/*   Updated: 2025/12/05 00:00:00 by agedikoglu       ###   ########.fr       */
+/*   Created: 2025/12/21 15:53:49 by agedikog          #+#    #+#             */
+/*   Updated: 2025/12/21 15:53:53 by agedikog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
