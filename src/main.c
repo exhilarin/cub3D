@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
+/*   By: agedikog <agedikog@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 21:04:49 by ilyas-guney       #+#    #+#             */
-/*   Updated: 2025/10/28 22:05:54 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2025/12/21 17:07:33 by agedikog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-static int check_file_extension(char *filename)
+static int	check_file_extension(char *filename)
 {
     int len;
 
@@ -22,7 +22,7 @@ static int check_file_extension(char *filename)
     return (ft_strncmp(&filename[len - 4], ".cub", 4) == 0);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
     t_game game;
 

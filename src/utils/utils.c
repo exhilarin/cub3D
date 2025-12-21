@@ -6,7 +6,7 @@
 /*   By: agedikog <agedikog@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 15:54:54 by agedikog          #+#    #+#             */
-/*   Updated: 2025/12/21 15:54:58 by agedikog         ###   ########.fr       */
+/*   Updated: 2025/12/21 16:24:36 by agedikog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,3 @@ int	skip_whitespace(char *str)
 		i++;
 	return (i);
 }
-
-

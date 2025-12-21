@@ -6,17 +6,17 @@
 /*   By: agedikog <agedikog@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 15:53:11 by agedikog          #+#    #+#             */
-/*   Updated: 2025/12/21 15:53:17 by agedikog         ###   ########.fr       */
+/*   Updated: 2025/12/21 17:08:35 by agedikog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static int is_map_line(char *line)
+static int	is_map_line(char *line)
 {
-    int i;
+	int	i;
 
-    i = skip_whitespace(line);
+	i = skip_whitespace(line);
     if (!line || line[i] == '\0')
         return (0);
     while (line[i])
@@ -28,12 +28,12 @@ static int is_map_line(char *line)
     return (1);
 }
 
-static int process_line(char *line, t_game *game)
+static int	process_line(char *line, t_game *game)
 {
-    int i;
+	int	i;
 
-    i = skip_whitespace(line);
-    if (line [i] == '\0' || line[i] == '\n')
+	i = skip_whitespace(line);
+    if (line[i] == '\0' || line[i] == '\n')
         return (0);
     if (ft_strncmp(&line[i], "NO", 2) == 0 || ft_strncmp(&line[i], "SO", 2) == 0
         || ft_strncmp(&line[i], "WE", 2) == 0 || ft_strncmp(&line[i], "EA", 2) == 0)
@@ -47,7 +47,7 @@ static int process_line(char *line, t_game *game)
     return (0);
 }
 
-static void check_all_elements(t_game *game)
+static void	check_all_elements(t_game *game)
 {
     if (!game->textures.north)
         ft_perror("Error\nMissing north texture (NO)\n");
@@ -60,25 +60,21 @@ static void check_all_elements(t_game *game)
     if (game->textures.floor_color == -1)
         ft_perror("Error\nMissing floor color (F)\n");
     if (game->textures.ceiling_color == -1)
-        ft_perror("Error\nMissing ceiling color (C)\n");    
+        ft_perror("Error\nMissing ceiling color (C)\n");
 }
 
-void parse_file(char *file, t_game *game)
+static int	read_file_lines(t_game *game)
 {
-    char *line;
-    int map_found;
+	char	*line;
+	int		map_found;
 
-    game->map_path = file;
-    game->map_fd = open(game->map_path, O_RDONLY);
-    if (game->map_fd < 0)
-        ft_perror("Error\nCould not open map file\n");
-    map_found = 0;
+	map_found = 0;
 	while (1)
 	{
 		line = get_next_line(game->map_fd);
 		if (!line)
 			break ;
-		if (line[ft_strlen(line) - 1] == '\n')
+		if (ft_strlen(line) > 0 && line[ft_strlen(line) - 1] == '\n')
 			line[ft_strlen(line) - 1] = '\0';
 		if (process_line(line, game))
 		{
@@ -86,17 +82,30 @@ void parse_file(char *file, t_game *game)
 			if (!parse_map(line, game->map_fd, game))
 			{
 				free(line);
-				close(game->map_fd);
-				ft_perror("Error\nMap parsing failed\n");
+				return (-1);
 			}
 			free(line);
 			break ;
 		}
 		free(line);
 	}
+	return (map_found);
+}
+
+void	parse_file(char *file, t_game *game)
+{
+	int	result;
+
+	game->map_path = file;
+	game->map_fd = open(game->map_path, O_RDONLY);
+	if (game->map_fd < 0)
+		ft_perror("Error\nCould not open map file\n");
+	result = read_file_lines(game);
 	close(game->map_fd);
-	if (!map_found)
+	if (result == -1)
+		ft_perror("Error\nMap parsing failed\n");
+	if (result == 0)
 		ft_perror("Error\nNo map found in file\n");
-    check_all_elements(game);
+	check_all_elements(game);
 	validate_map(game);
 }
