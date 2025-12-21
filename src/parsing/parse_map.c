@@ -64,7 +64,7 @@ int parse_map(char *first_line, int fd, t_game *game)
         line = get_next_line(fd);
         if (!line)
             break ;
-        map_str = gnl_strjoin(map_str, line);
+        map_str = ft_strjoin_gnl(map_str, line);
         free(line);
     }
     if (!check_map_is_closed(map_str))

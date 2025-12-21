@@ -63,7 +63,6 @@ void    validate_map(t_game *game);
 /* --- Utils Functions --- */
 void    ft_perror(const char *str);
 void    init_data(t_game *game);
-char    *gnl_strjoin(char *s1, char *s2);
 int     is_valid_map_char(char c);
 int     skip_whitespace(char *str);
 
