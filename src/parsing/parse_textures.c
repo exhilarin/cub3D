@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agedikog <agedikog@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 15:53:36 by agedikog          #+#    #+#             */
-/*   Updated: 2025/12/21 17:07:44 by agedikog         ###   ########.fr       */
+/*   Updated: 2025/12/26 04:46:30 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,20 @@ static char	*get_path(char *line, int i)
 	int		j;
 
 	i += skip_whitespace(&line[i]);
-    len = 0;
-    while (line[i + len] && line[i + len] != '\n')
-        len++;
-    path = (char *)malloc(sizeof(char) * (len + 1));
-    if (!path)
-        return (NULL);
-    j = 0;
-    while (j < len)
-    {
-        path[j] = line[i + j];
-        j++;
-    }
-    path[j] = '\0';
-    return (path);
+	len = 0;
+	while (line[i + len] && line[i + len] != '\n')
+		len++;
+	path = (char *)malloc(sizeof(char) * (len + 1));
+	if (!path)
+		return (NULL);
+	j = 0;
+	while (j < len)
+	{
+		path[j] = line[i + j];
+		j++;
+	}
+	path[j] = '\0';
+	return (path);
 }
 
 static void	assign_texture(char **dest, char *path, t_game *game)

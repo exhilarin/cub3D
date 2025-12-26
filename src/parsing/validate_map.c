@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agedikog <agedikog@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 15:53:49 by agedikog          #+#    #+#             */
-/*   Updated: 2025/12/21 17:07:56 by agedikog         ###   ########.fr       */
+/*   Updated: 2025/12/26 04:46:03 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ static void	check_player(t_game *game, int x, int y)
 	char	c;
 
 	c = game->map.grid[y][x];
-    if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
-    {
-        if (game->map.player_count > 0)
-            ft_perror("Error\nMultiple player start positions found\n");
-        game->map.player_count++;
-        game->map.player_dir = c;
-        game->map.player_x = x + 0.5;
-        game->map.player_y = y + 0.5;
-    }
+	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
+	{
+		if (game->map.player_count > 0)
+			ft_perror("Error\nMultiple player start positions found\n");
+		game->map.player_count++;
+		game->map.player_dir = c;
+		game->map.player_x = x + 0.5;
+		game->map.player_y = y + 0.5;
+	}
 }
 
 static int	is_surrounded(t_game *game, int x, int y)
@@ -35,19 +35,19 @@ static int	is_surrounded(t_game *game, int x, int y)
 	int		row_len;
 
 	grid = game->map.grid;
-    height = game->map.height;
-    if (y == 0 || y == height - 1 || x == 0 || x == (int)ft_strlen(grid[y]) - 1)
-        return (0);
-    row_len = ft_strlen(grid[y - 1]);
-    if (x >= row_len || grid[y - 1][x] == ' ' || grid[y - 1][x] == '\t')
-        return (0);
-    row_len = ft_strlen(grid[y + 1]);
-    if (x >= row_len || grid[y + 1][x] == ' ' || grid[y + 1][x] == '\t')
-        return (0);
-    if (grid[y][x - 1] == ' ' || grid[y][x + 1] == ' '
-        || grid[y][x - 1] == '\t' || grid[y][x + 1] == '\t')
-        return (0);
-    return (1);
+	height = game->map.height;
+	if (y == 0 || y == height - 1 || x == 0 || x == (int)ft_strlen(grid[y]) - 1)
+		return (0);
+	row_len = ft_strlen(grid[y - 1]);
+	if (x >= row_len || grid[y - 1][x] == ' ' || grid[y - 1][x] == '\t')
+		return (0);
+	row_len = ft_strlen(grid[y + 1]);
+	if (x >= row_len || grid[y + 1][x] == ' ' || grid[y + 1][x] == '\t')
+		return (0);
+	if (grid[y][x - 1] == ' ' || grid[y][x + 1] == ' '
+		|| grid[y][x - 1] == '\t' || grid[y][x + 1] == '\t')
+		return (0);
+	return (1);
 }
 
 static void	validate_cell(t_game *game, int x, int y)

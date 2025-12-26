@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agedikog <agedikog@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 15:53:24 by agedikog          #+#    #+#             */
-/*   Updated: 2025/12/21 17:07:49 by agedikog         ###   ########.fr       */
+/*   Updated: 2025/12/26 04:46:48 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ static void	get_max_width(t_game *game)
 	int	len;
 
 	i = 0;
-    game->map.width = 0;
-    while (game->map.grid[i])
-    {
-        len = ft_strlen(game->map.grid[i]);
-        if (len > game->map.width)
-            game->map.width = len;
-        i++;
-    }
-    game->map.height = i;
+	game->map.width = 0;
+	while (game->map.grid[i])
+	{
+		len = ft_strlen(game->map.grid[i]);
+		if (len > game->map.width)
+			game->map.width = len;
+		i++;
+	}
+	game->map.height = i;
 }
 
 static int	check_map_is_closed(char *map_str)
@@ -34,15 +34,15 @@ static int	check_map_is_closed(char *map_str)
 	int	i;
 
 	i = 0;
-    if (!map_str)
-        return (1);
-    while (map_str[i])
-    {
-        if (map_str[i] == '\n' && map_str[i + 1] == '\n')
-            return (0);
-        i++;
-    }
-    return (1);
+	if (!map_str)
+		return (1);
+	while (map_str[i])
+	{
+		if (map_str[i] == '\n' && map_str[i + 1] == '\n')
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 static char	*init_map_str(char *first_line)

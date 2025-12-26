@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
+/*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 19:58:27 by iguney            #+#    #+#             */
-/*   Updated: 2025/04/13 09:11:57 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2025/12/26 04:54:11 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,12 @@ char	*ft_strjoin_gnl(char const *s1, char const *s2)
 	if (!temp_s1 || !s2)
 		return (NULL);
 	str = (char *)malloc(ft_strlen_gnl(temp_s1) + ft_strlen_gnl(s2) + 1);
-	if (!str)
-		return (NULL);
 	i = -1;
 	while (temp_s1[++i] != 0)
 		str[i] = temp_s1[i];
 	j = -1;
 	while (s2[++j] != 0)
-	{
 		str[i + j] = s2[j];
-	}
 	str[i + j] = 0;
 	free(temp_s1);
 	return (str);

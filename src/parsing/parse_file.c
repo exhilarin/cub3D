@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agedikog <agedikog@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 15:53:11 by agedikog          #+#    #+#             */
-/*   Updated: 2025/12/21 17:08:35 by agedikog         ###   ########.fr       */
+/*   Updated: 2025/12/26 04:46:56 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ static int	is_map_line(char *line)
 	int	i;
 
 	i = skip_whitespace(line);
-    if (!line || line[i] == '\0')
-        return (0);
-    while (line[i])
-    {
-        if (!is_valid_map_char(line[i]))
-            return (0);
-        i++;
-    }
-    return (1);
+	if (!line || line[i] == '\0')
+		return (0);
+	while (line[i])
+	{
+		if (!is_valid_map_char(line[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 static int	process_line(char *line, t_game *game)
@@ -33,34 +33,34 @@ static int	process_line(char *line, t_game *game)
 	int	i;
 
 	i = skip_whitespace(line);
-    if (line[i] == '\0' || line[i] == '\n')
-        return (0);
-    if (ft_strncmp(&line[i], "NO", 2) == 0 || ft_strncmp(&line[i], "SO", 2) == 0
-        || ft_strncmp(&line[i], "WE", 2) == 0 || ft_strncmp(&line[i], "EA", 2) == 0)
-        parse_textures(&line[i], game);
-    else if (ft_strncmp(&line[i], "F", 1) == 0 || ft_strncmp(&line[i], "C", 1) == 0)
-        parse_colors(&line[i], game);
-    else if (is_map_line(line))
-        return (1);
-    else
-        ft_perror("Error\nUnknown identifier in map file\n");
-    return (0);
+	if (line[i] == '\0' || line[i] == '\n')
+		return (0);
+	if (ft_strncmp(&line[i], "NO", 2) == 0 || ft_strncmp(&line[i], "SO", 2) == 0
+		|| ft_strncmp(&line[i], "WE", 2) == 0 || ft_strncmp(&line[i], "EA", 2) == 0)
+		parse_textures(&line[i], game);
+	else if (ft_strncmp(&line[i], "F", 1) == 0 || ft_strncmp(&line[i], "C", 1) == 0)
+		parse_colors(&line[i], game);
+	else if (is_map_line(line))
+		return (1);
+	else
+		ft_perror("Error\nUnknown identifier in map file\n");
+	return (0);
 }
 
 static void	check_all_elements(t_game *game)
 {
-    if (!game->textures.north)
-        ft_perror("Error\nMissing north texture (NO)\n");
-    if (!game->textures.south)
-        ft_perror("Error\nMissing south texture (SO)\n");
-    if (!game->textures.west)
-        ft_perror("Error\nMissing west texture (WE)\n");
-    if (!game->textures.east)
-        ft_perror("Error\nMissing east texture (EA)\n");
-    if (game->textures.floor_color == -1)
-        ft_perror("Error\nMissing floor color (F)\n");
-    if (game->textures.ceiling_color == -1)
-        ft_perror("Error\nMissing ceiling color (C)\n");
+	if (!game->textures.north)
+		ft_perror("Error\nMissing north texture (NO)\n");
+	if (!game->textures.south)
+		ft_perror("Error\nMissing south texture (SO)\n");
+	if (!game->textures.west)
+		ft_perror("Error\nMissing west texture (WE)\n");
+	if (!game->textures.east)
+		ft_perror("Error\nMissing east texture (EA)\n");
+	if (game->textures.floor_color == -1)
+		ft_perror("Error\nMissing floor color (F)\n");
+	if (game->textures.ceiling_color == -1)
+		ft_perror("Error\nMissing ceiling color (C)\n");
 }
 
 static int	read_file_lines(t_game *game)

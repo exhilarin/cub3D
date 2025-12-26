@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_colors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agedikog <agedikog@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 15:52:39 by agedikog          #+#    #+#             */
-/*   Updated: 2025/12/21 16:30:52 by agedikog         ###   ########.fr       */
+/*   Updated: 2025/12/26 04:52:05 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	check_isdigit(char *str)
 {
-	int i;
-	int found_digit;
+	int	i;
+	int	found_digit;
 
 	found_digit = 0;
 	i = skip_whitespace(str);
@@ -34,7 +34,7 @@ static int	check_isdigit(char *str)
 
 static int	split_len(char **tab)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (tab[len])
@@ -44,10 +44,13 @@ static int	split_len(char **tab)
 
 static int	calculate_rgb(char **rgb)
 {
-	int r;
-	int g;
-	int b;
+	int	r;
+	int	g;
+	int	b;
 
+	if (ft_strchr(ft_strtrim(rgb[0], " \t"), ' ') || ft_strchr(ft_strtrim(rgb[1], " \t"), ' ')
+		|| ft_strchr(ft_strtrim(rgb[2], " \t"), ' ') )
+		return (-1);
 	r = ft_atoi(rgb[0]);
 	g = ft_atoi(rgb[1]);
 	b = ft_atoi(rgb[2]);
