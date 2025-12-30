@@ -4,11 +4,13 @@ BUILD_DIR   = build
 INCLUDE_DIR = include
 LIBFT_DIR   = library/libft
 GNL_DIR     = library/gnl
+MLX_DIR		= library/minilibx-linux
 
 CC          = cc
-CFLAGS      = -Wall -Wextra -Werror -I$(INCLUDE_DIR) -I$(LIBFT_DIR) -I$(GNL_DIR)
-
+CFLAGS      = -Wall -Wextra -Werror -I$(INCLUDE_DIR) -I$(LIBFT_DIR) -I$(GNL_DIR) -I$(MLX_DIR)
 LIBFT       = $(LIBFT_DIR)/libft.a
+MLX         = $(MLX_DIR)/libmlx.a
+MLX_FLAGS   = -L$(MLX_DIR) -lmlx -L/usr/include/../lib -lXext -lX11 -lm -lbsd
 
 SRCS = \
 	src/main.c \
@@ -17,6 +19,7 @@ SRCS = \
 	src/parsing/parse_colors.c \
 	src/parsing/parse_map.c \
 	src/parsing/validate_map.c \
+	src/game/mlx.c \
 	src/utils/error.c \
 	src/utils/free.c \
 	src/utils/utils.c \
@@ -37,8 +40,8 @@ BLUE        = \033[0;34m
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(GNL_OBJS) $(LIBFT)
-	@$(CC) $(CFLAGS) $(OBJS) $(GNL_OBJS) $(LIBFT) -o $@
+$(NAME): $(OBJS) $(GNL_OBJS) $(LIBFT) $(MLX)
+	@$(CC) $(CFLAGS) $(OBJS) $(GNL_OBJS) $(LIBFT) $(MLX_FLAGS) -o $@
 	@echo "$(GREEN)✅ Build complete: $(NAME)$(RESET)"
 
 $(BUILD_DIR)/%.o: src/%.c
@@ -54,9 +57,13 @@ $(BUILD_DIR)/gnl/%.o: library/gnl/%.c
 $(LIBFT):
 	@$(MAKE) -s -C $(LIBFT_DIR)
 
+$(MLX):
+	@$(MAKE) -s -C $(MLX_DIR)
+
 clean:
 	@rm -rf $(BUILD_DIR)
 	@$(MAKE) -s -C $(LIBFT_DIR) clean
+	@$(MAKE) -s -C $(MLX_DIR) clean
 	@echo "$(YELLOW)🧹 Object files removed.$(RESET)"
 
 fclean: clean

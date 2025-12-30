@@ -6,11 +6,11 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 15:54:00 by agedikog          #+#    #+#             */
-/*   Updated: 2025/12/26 04:45:55 by iguney           ###   ########.fr       */
+/*   Updated: 2025/12/26 20:29:05 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub3d.h"
+#include "cub3d.h"
 
 static void	init_game(t_game *game)
 {
