@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 21:07:56 by ilyas-guney       #+#    #+#             */
-/*   Updated: 2025/12/26 22:38:16 by iguney           ###   ########.fr       */
+/*   Updated: 2025/12/30 22:18:31 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include "structs.h"
-
-#define LENGHT 1920
-#define HEIGHT 1080
+# include "config.h"
 
 /* --- Parsing Functions --- */
 void	parse_file(char *file, t_game *game);
@@ -41,10 +39,12 @@ int		skip_whitespace(char *str);
 /* --- Free Functions --- */
 void	free_split(char **tab);
 void	free_game(t_game *game);
+void    free_mlx(t_game *game);
 
 /* --- Game Functions --- */
 void game_loop(t_game *game);
-
-
+void player_init(t_game *game);
+void key_hook(t_game *game);
+void exit_game(t_game *game);
 
 #endif
