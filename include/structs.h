@@ -34,11 +34,29 @@ typedef struct s_addr
 	int		endian;
 } 				t_addr;
 
+typedef struct s_player
+{
+	double	x;
+	double	y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+
+	int		move_forward;
+	int		move_backward;
+	int		move_left;
+	int		move_right;
+	int		rotate_left;
+	int		rotate_right;
+}				t_player;
+
 typedef struct s_game
 {
 	t_texture	textures;
 	t_addr		img_addr;
 	t_map		map;
+	t_player	player;
 	void		*mlx;
 	void		*win;
 	void		*image;

@@ -20,36 +20,38 @@ static void init_mlx(t_game *game)
 
 static void render_frame(t_game *game)
 {
-    char    *pixel_adrr;
-    char    *color;
+    unsigned int    color;
+    char            *pixel_adrr;
     for (int y = 0; y < HEIGHT; y++)
     {
         if (y < HEIGHT / 2)
-            color = (char *)&game->textures.floor_color;
+            color = game->textures.ceiling_color;
         else
-            color = (char *)&game->textures.ceiling_color;
+            color = game->textures.floor_color;
         for (int x = 0; x < LENGHT; x++)
         {
             pixel_adrr = game->addres + (y * game->img_addr.line_lenght + x 
                 * (game->img_addr.bpp / 8));
-            *(unsigned int *)pixel_adrr = *(unsigned int *)color;
+            *(unsigned int *)pixel_adrr = color;
         }
     }
     mlx_put_image_to_window(game->mlx, game->win, game->image, 0, 0);
 }
 
-static void free_mlx(t_game *game)
+// Player Initialization
+// Input Hook setup
+
+void exit_game(t_game *game)
 {
-    if (game->win)
-        mlx_destroy_window(game->mlx, game->win);
-    if (game->image)
-        mlx_destroy_image(game->mlx, game->image);
+    free_game(game);
+    exit(0);
 }
 
 void game_loop(t_game *game)
 {
     init_mlx(game);
+    player_init(game);
+    key_hook(game);
     mlx_loop_hook(game->mlx, (void *)render_frame, game);
     mlx_loop(game->mlx);
-    free_mlx(game);
 }
