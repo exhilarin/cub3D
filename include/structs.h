@@ -26,21 +26,22 @@ typedef struct s_map
 	double	player_y;
 }			t_map;
 
-typedef struct s_addres
+typedef struct s_addr
 {
 	char	*addr;
 	int		bpp;
 	int		line_lenght;
 	int		endian;
-} 				t_addres;
+} 				t_addr;
 
 typedef struct s_game
 {
 	t_texture	textures;
-	t_addres	addr;
+	t_addr		img_addr;
 	t_map		map;
 	void		*mlx;
 	void		*win;
+	void		*image;
 	int			map_fd;
 	char		*map_path;
 	char		*addres;
