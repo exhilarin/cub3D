@@ -6,11 +6,11 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 21:04:49 by ilyas-guney       #+#    #+#             */
-/*   Updated: 2025/12/26 14:07:58 by iguney           ###   ########.fr       */
+/*   Updated: 2025/12/26 20:52:58 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "cub3d.h"
 
 static int	check_file_extension(char *filename)
 {
@@ -34,6 +34,7 @@ int	main(int argc, char **argv)
 		ft_perror("Error\ninvalid file extension\n");
 	init_data(&game);
 	parse_file(argv[1], &game);
+	game_loop(&game);
 	free_game(&game);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 21:07:56 by ilyas-guney       #+#    #+#             */
-/*   Updated: 2025/12/26 15:50:03 by iguney           ###   ########.fr       */
+/*   Updated: 2025/12/26 22:38:16 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,43 +15,15 @@
 
 # include "../library/libft/libft.h"
 # include "../library/gnl/get_next_line.h"
-//# include "../library/minilibx-linux/mlx.h"
+# include "../library/minilibx-linux/mlx.h"
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include "structs.h"
 
-typedef struct s_texture
-{
-	char	*north;
-	char	*south;
-	char	*west;
-	char	*east;
-	int		floor_color;
-	int		ceiling_color;
-	int		c_count;
-}			t_texture;
-
-typedef struct s_map
-{
-	char	**grid;
-	int		width;
-	int		height;
-	int		player_count;
-	char	player_dir;
-	double	player_x;
-	double	player_y;
-}			t_map;
-
-typedef struct s_game
-{
-	t_texture	textures;
-	t_map		map;
-	void		*mlx;
-	void		*win;
-	int			map_fd;
-	char		*map_path;
-}				t_game;
+#define LENGHT 1920
+#define HEIGHT 1080
 
 /* --- Parsing Functions --- */
 void	parse_file(char *file, t_game *game);
@@ -69,5 +41,10 @@ int		skip_whitespace(char *str);
 /* --- Free Functions --- */
 void	free_split(char **tab);
 void	free_game(t_game *game);
+
+/* --- Game Functions --- */
+void game_loop(t_game *game);
+
+
 
 #endif
