@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 15:54:45 by agedikog          #+#    #+#             */
-/*   Updated: 2025/12/26 20:29:05 by iguney           ###   ########.fr       */
+/*   Updated: 2025/12/30 22:18:51 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,19 @@ void	free_game(t_game *game)
 		free(game->textures.east);
 	if (game->map.grid)
 		free_split(game->map.grid);
+	if (game->map_path)
+		free(game->map_path);
+	if (game->map_fd >= 0)
+		close(game->map_fd);
+	free_mlx(game);
+}
+
+void free_mlx(t_game *game)
+{
+    if (game->win)
+        mlx_destroy_window(game->mlx, game->win);
+    if (game->image)
+        mlx_destroy_image(game->mlx, game->image);
+    if (game->mlx)
+		free(game->mlx);
 }
