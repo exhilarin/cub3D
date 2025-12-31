@@ -43,6 +43,9 @@ typedef struct s_player
 	double	plane_x;
 	double	plane_y;
 
+	double	move_speed;
+	double	rotate_speed;
+
 	int		move_forward;
 	int		move_backward;
 	int		move_left;
