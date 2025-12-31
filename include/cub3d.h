@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 21:07:56 by ilyas-guney       #+#    #+#             */
-/*   Updated: 2025/12/30 22:18:31 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2025/12/31 02:29:09 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <math.h>
 # include "structs.h"
 # include "config.h"
 
@@ -43,8 +44,10 @@ void    free_mlx(t_game *game);
 
 /* --- Game Functions --- */
 void game_loop(t_game *game);
-void player_init(t_game *game);
+void init_player(t_game *game);
 void key_hook(t_game *game);
+void render_frame(t_game *game);
+void update_player(t_game *game);
 void exit_game(t_game *game);
 
 #endif
