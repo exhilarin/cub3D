@@ -19,9 +19,11 @@ SRCS = \
 	src/parsing/parse_colors.c \
 	src/parsing/parse_map.c \
 	src/parsing/validate_map.c \
-	src/game/loop.c \
-	src/game/player.c \
+	src/game/game.c \
+	src/game/player/player_init.c \
+	src/game/player/player_move.c \
 	src/game/key_hook.c \
+	src/game/render/render.c \
 	src/utils/error.c \
 	src/utils/free.c \
 	src/utils/utils.c \
