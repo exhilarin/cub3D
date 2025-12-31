@@ -49,8 +49,16 @@ static void set_plane(t_game *game)
     }
 }
 
-void player_init(t_game *game)
+void init_player(t_game *game)
 {
+    game->player.move_speed = 0.05;
+    game->player.rotate_speed = 0.03;
+    game->player.move_forward = 0;
+    game->player.move_backward = 0;
+    game->player.move_left = 0;
+    game->player.move_right = 0;
+    game->player.rotate_left = 0;
+    game->player.rotate_right = 0;
     game->player.x = game->map.player_x + 0.5;
     game->player.y = game->map.player_y + 0.5;
     set_dir(game);
