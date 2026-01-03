@@ -30,6 +30,5 @@ void game_loop(t_game *game)
 void exit_game(t_game *game)
 {
     free_game(game);
-    free_mlx(game);
     exit(0);
 }
