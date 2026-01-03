@@ -6,7 +6,7 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 15:52:39 by agedikog          #+#    #+#             */
-/*   Updated: 2025/12/26 20:29:05 by iguney           ###   ########.fr       */
+/*   Updated: 2026/01/03 19:02:39 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,16 +47,21 @@ static int	calculate_rgb(char **rgb)
 	int	r;
 	int	g;
 	int	b;
+	char **a;
 
-	if (ft_strchr(ft_strtrim(rgb[0], " \t"), ' ') || ft_strchr(ft_strtrim(rgb[1], " \t"), ' ')
-		|| ft_strchr(ft_strtrim(rgb[2], " \t"), ' ') )
-		return (-1);
+	a = malloc(sizeof(char *) * 4);
+	a[3] =NULL;
+	a[0] = ft_strtrim(rgb[0], " \t");
+	a[1] = ft_strtrim(rgb[1], " \t");
+	a[2] = ft_strtrim(rgb[2], " \t");
+	if (ft_strchr(a[0], ' ') || ft_strchr(a[1], ' ') || ft_strchr(a[2], ' ') )
+		return (free_split(a), -1);
 	r = ft_atoi(rgb[0]);
 	g = ft_atoi(rgb[1]);
 	b = ft_atoi(rgb[2]);
 	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
-		return (-1);
-	return ((r << 16) | (g << 8) | b);
+		return (free_split(a), -1);
+	return (free_split(a), (r << 16) | (g << 8) | b);
 }
 
 static int	validate_and_get_color(char *line)
