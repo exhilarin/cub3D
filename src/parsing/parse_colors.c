@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_colors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
+/*   By: agedikog <agedikog@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 15:52:39 by agedikog          #+#    #+#             */
-/*   Updated: 2026/01/03 19:02:39 by iguney           ###   ########.fr       */
+/*   Updated: 2026/01/08 18:50:55 by agedikog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static int	check_isdigit(char *str)
 	found_digit = 0;
 	i = skip_whitespace(str);
 	if (!str[i])
+		return (0);
+	if (str[i] == '-' || str[i] == '+')
 		return (0);
 	while (str[i] && str[i] != '\n')
 	{
@@ -56,9 +58,9 @@ static int	calculate_rgb(char **rgb)
 	a[2] = ft_strtrim(rgb[2], " \t");
 	if (ft_strchr(a[0], ' ') || ft_strchr(a[1], ' ') || ft_strchr(a[2], ' ') )
 		return (free_split(a), -1);
-	r = ft_atoi(rgb[0]);
-	g = ft_atoi(rgb[1]);
-	b = ft_atoi(rgb[2]);
+	r = ft_atoi(a[0]);
+	g = ft_atoi(a[1]);
+	b = ft_atoi(a[2]);
 	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
 		return (free_split(a), -1);
 	return (free_split(a), (r << 16) | (g << 8) | b);

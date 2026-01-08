@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
+/*   By: agedikog <agedikog@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 15:53:11 by agedikog          #+#    #+#             */
-/*   Updated: 2026/01/03 19:10:14 by iguney           ###   ########.fr       */
+/*   Updated: 2026/01/08 19:07:46 by agedikog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,19 @@ static int	is_map_line(char *line)
 	return (1);
 }
 
+static int	is_texture_id(char *s)
+{
+	if ((s[0] == 'N' && s[1] == 'O') || (s[0] == 'S' && s[1] == 'O')
+		|| (s[0] == 'W' && s[1] == 'E') || (s[0] == 'E' && s[1] == 'A'))
+		return (s[2] == ' ' || s[2] == '\t');
+	return (0);
+}
+
+static int	is_color_id(char *s)
+{
+	return ((s[0] == 'F' || s[0] == 'C') && (s[1] == ' ' || s[1] == '\t'));
+}
+
 static int	process_line(char *line, t_game *game)
 {
 	int	i;
@@ -35,13 +48,16 @@ static int	process_line(char *line, t_game *game)
 	i = skip_whitespace(line);
 	if (line[i] == '\0' || line[i] == '\n')
 		return (0);
-	if (ft_strncmp(&line[i], "NO", 2) == 0 || ft_strncmp(&line[i], "SO", 2) == 0
-		|| ft_strncmp(&line[i], "WE", 2) == 0 || ft_strncmp(&line[i], "EA", 2) == 0)
+	if (is_texture_id(&line[i]))
 		parse_textures(&line[i], game);
-	else if (ft_strncmp(&line[i], "F", 1) == 0 || ft_strncmp(&line[i], "C", 1) == 0)
+	else if (is_color_id(&line[i]))
 		parse_colors(&line[i], game);
 	else if (is_map_line(line))
+	{
+		if (game->textures.c_count != 6)
+			ft_perror("Error\nAll elements must be defined before map\n");
 		return (1);
+	}
 	else
 		ft_perror("Error\nUnknown identifier in map file\n");
 	return (0);
@@ -95,7 +111,11 @@ static int	read_file_lines(t_game *game)
 void	parse_file(char *file, t_game *game)
 {
 	int	result;
+	int	len;
 
+	len = ft_strlen(file);
+	if (len < 4 || ft_strncmp(&file[len - 4], ".cub", 4) != 0)
+		ft_perror("Error\nMap file must have .cub extension\n");
 	game->map_path = file;
 	game->map_fd = open(game->map_path, O_RDONLY);
 	if (game->map_fd < 0)

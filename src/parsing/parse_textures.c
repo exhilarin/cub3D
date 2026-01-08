@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
+/*   By: agedikog <agedikog@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 15:53:36 by agedikog          #+#    #+#             */
-/*   Updated: 2025/12/26 20:29:05 by iguney           ###   ########.fr       */
+/*   Updated: 2026/01/08 19:17:50 by agedikog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ static char	*get_path(char *line, int i)
 	len = 0;
 	while (line[i + len] && line[i + len] != '\n')
 		len++;
+	while (len > 0 && (line[i + len - 1] == ' ' || line[i + len - 1] == '\t'))
+		len--;
 	path = (char *)malloc(sizeof(char) * (len + 1));
 	if (!path)
 		return (NULL);
