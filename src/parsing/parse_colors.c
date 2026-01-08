@@ -6,7 +6,7 @@
 /*   By: agedikog <agedikog@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 15:52:39 by agedikog          #+#    #+#             */
-/*   Updated: 2026/01/08 18:50:55 by agedikog         ###   ########.fr       */
+/*   Updated: 2026/01/08 19:31:53 by agedikog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	calculate_rgb(char **rgb)
 	char **a;
 
 	a = malloc(sizeof(char *) * 4);
-	a[3] =NULL;
+	a[3] = NULL;
 	a[0] = ft_strtrim(rgb[0], " \t");
 	a[1] = ft_strtrim(rgb[1], " \t");
 	a[2] = ft_strtrim(rgb[2], " \t");
