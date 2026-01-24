@@ -29,30 +29,30 @@ static void set_plane(t_game *game)
 {
     if (game->map.player_dir == 'N')
     {
-        game->player.plane_x = 0;
-        game->player.plane_y = FOV;
-    }
-    else if (game->map.player_dir == 'S')
-    {
-        game->player.plane_x = 0;
-        game->player.plane_y = -FOV;
-    }
-    else if (game->map.player_dir == 'E')
-    {
         game->player.plane_x = FOV;
         game->player.plane_y = 0;
     }
-    else if (game->map.player_dir == 'W')
+    else if (game->map.player_dir == 'S')
     {
         game->player.plane_x = -FOV;
         game->player.plane_y = 0;
+    }
+    else if (game->map.player_dir == 'E')
+    {
+        game->player.plane_x = 0;
+        game->player.plane_y = FOV;
+    }
+    else if (game->map.player_dir == 'W')
+    {
+        game->player.plane_x = 0;
+        game->player.plane_y = -FOV;
     }
 }
 
 void init_player(t_game *game)
 {
-    game->player.move_speed = 0.05;
-    game->player.rotate_speed = 0.03;
+    game->player.move_speed = 0.08;
+    game->player.rotate_speed = 0.05;
     game->player.move_forward = 0;
     game->player.move_backward = 0;
     game->player.move_left = 0;

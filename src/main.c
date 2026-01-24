@@ -6,7 +6,7 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 21:04:49 by ilyas-guney       #+#    #+#             */
-/*   Updated: 2026/01/03 19:13:46 by iguney           ###   ########.fr       */
+/*   Updated: 2026/01/24 16:48:08 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ int	main(int argc, char **argv)
 	init_data(&game);
 	parse_file(argv[1], &game);
 	game_loop(&game);
+	free_game(&game);
 	return (0);
 }

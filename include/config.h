@@ -2,8 +2,8 @@
 #ifndef CONFIG_H
 # define CONFIG_H
 
-#define LENGHT 1920
-#define HEIGHT 1080
+#define LENGHT 1280
+#define HEIGHT 720
 
 #define FOV 0.66
 

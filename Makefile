@@ -24,6 +24,8 @@ SRCS = \
 	src/game/player/player_move.c \
 	src/game/key_hook.c \
 	src/game/render/render.c \
+	src/game/raycasting/draw_walls.c \
+	src/game/raycasting/raycasting.c \
 	src/utils/error.c \
 	src/utils/free.c \
 	src/utils/utils.c \
