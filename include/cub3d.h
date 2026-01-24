@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
+/*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 21:07:56 by ilyas-guney       #+#    #+#             */
-/*   Updated: 2025/12/31 02:29:09 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/01/24 14:28:04 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,15 @@ void key_hook(t_game *game);
 void render_frame(t_game *game);
 void update_player(t_game *game);
 void exit_game(t_game *game);
+
+/* --- Raycasting Functions --- */
+void  draw_walls(t_game *game);
+void  compute_ray(t_game *game, int x);
+void  init_dda(t_game *game);
+void  perform_dda(t_game *game);
+void  compute_wall_params(t_game *game);
+void  select_texture(t_game *game);
+void  compute_texcoords(t_game *game);
+void  draw_vertical_stripe(t_game *game, int x);
 
 #endif

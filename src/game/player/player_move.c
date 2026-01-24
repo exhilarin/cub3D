@@ -6,7 +6,7 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 23:08:20 by iguney            #+#    #+#             */
-/*   Updated: 2026/01/20 00:21:14 by iguney           ###   ########.fr       */
+/*   Updated: 2026/01/24 16:35:25 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ static void rotate_player(t_game *game)
     old_dir_x = game->player.dir_x;
     old_plane_x = game->player.plane_x;
     if (game->player.rotate_left)
-        rotation_speed += game->player.rotate_speed;
-    if (game->player.rotate_right)
         rotation_speed -= game->player.rotate_speed;
+    if (game->player.rotate_right)
+        rotation_speed += game->player.rotate_speed;
     if (rotation_speed != 0)
     {
         game->player.dir_x = game->player.dir_x * cos(rotation_speed)
@@ -40,9 +40,41 @@ static void rotate_player(t_game *game)
 
 static int collision_detection(t_game *game)
 {
-	if (game->map.grid[(int)game->player.new_y][(int)game->player.new_x] != '1')
-        return 1;
-    return 0;
+	int map_x;
+	int map_y;
+	double margin;
+
+	margin = 0.05;
+
+	map_x = (int)(game->player.new_x - margin);
+	map_y = (int)(game->player.new_y - margin);
+	if (map_x < 0 || map_y < 0 || map_y >= game->map.height || map_x >= game->map.width)
+		return 0;
+	if (game->map.grid[map_y][map_x] == '1')
+		return 0;
+		
+	map_x = (int)(game->player.new_x + margin);
+	map_y = (int)(game->player.new_y - margin);
+	if (map_x < 0 || map_y < 0 || map_y >= game->map.height || map_x >= game->map.width)
+		return 0;
+	if (game->map.grid[map_y][map_x] == '1')
+		return 0;
+		
+	map_x = (int)(game->player.new_x - margin);
+	map_y = (int)(game->player.new_y + margin);
+	if (map_x < 0 || map_y < 0 || map_y >= game->map.height || map_x >= game->map.width)
+		return 0;
+	if (game->map.grid[map_y][map_x] == '1')
+		return 0;
+		
+	map_x = (int)(game->player.new_x + margin);
+	map_y = (int)(game->player.new_y + margin);
+	if (map_x < 0 || map_y < 0 || map_y >= game->map.height || map_x >= game->map.width)
+		return 0;
+	if (game->map.grid[map_y][map_x] == '1')
+		return 0;
+		
+	return 1;
 }
 
 static void move(t_game *game)
