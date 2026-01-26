@@ -6,7 +6,7 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 21:04:49 by ilyas-guney       #+#    #+#             */
-/*   Updated: 2026/01/24 16:48:08 by iguney           ###   ########.fr       */
+/*   Updated: 2026/01/27 01:00:25 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ static int	check_file_extension(char *filename)
 	return (ft_strncmp(&filename[len - 4], ".cub", 4) == 0);
 }
 
-// 	TODO: Except for the map, each type of information from an element can be separated
-// by one or more spaces.
 int	main(int argc, char **argv)
 {
 	t_game	game;

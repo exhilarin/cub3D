@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
+/*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 15:53:49 by agedikog          #+#    #+#             */
-/*   Updated: 2025/12/30 21:15:59 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/01/27 00:49:54 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ static void	check_player(t_game *game, int x, int y)
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 	{
 		if (game->map.player_count > 0)
+		{
+			free_game(game);
 			ft_perror("Error\nMultiple player start positions found\n");
+		}
 		game->map.player_count++;
 		game->map.player_dir = c;
 		game->map.player_x = x + 0.5;
@@ -53,13 +56,19 @@ static int	is_surrounded(t_game *game, int x, int y)
 static void	validate_cell(t_game *game, int x, int y)
 {
 	if (!is_valid_map_char(game->map.grid[y][x]))
+	{
+		free_game(game);
 		ft_perror("Error\nInvalid character in map\n");
+	}
 	check_player(game, x, y);
 	if (game->map.grid[y][x] == '0'
 		|| ft_strchr("NSEW", game->map.grid[y][x]))
 	{
 		if (!is_surrounded(game, x, y))
+		{
+			free_game(game);
 			ft_perror("Error\nMap is not enclosed by walls\n");
+		}
 	}
 }
 
@@ -81,5 +90,8 @@ void	validate_map(t_game *game)
 		y++;
 	}
 	if (game->map.player_count != 1)
+	{
+		free_game(game);
 		ft_perror("Error\nMap must have exactly one player start position\n");
+	}
 }

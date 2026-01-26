@@ -15,16 +15,21 @@ MLX_FLAGS   = -L$(MLX_DIR) -lmlx -L/usr/include/../lib -lXext -lX11 -lm -lbsd
 SRCS = \
 	src/main.c \
 	src/parsing/parse_file.c \
+	src/parsing/parse_file_utils.c \
 	src/parsing/parse_textures.c \
 	src/parsing/parse_colors.c \
+	src/parsing/parse_colors_utils.c \
 	src/parsing/parse_map.c \
 	src/parsing/validate_map.c \
 	src/game/game.c \
+	src/game/game_init.c \
 	src/game/player/player_init.c \
 	src/game/player/player_move.c \
+	src/game/player/player_move_utils.c \
 	src/game/key_hook.c \
 	src/game/render/render.c \
 	src/game/raycasting/draw_walls.c \
+	src/game/raycasting/draw_walls_utils.c \
 	src/game/raycasting/raycasting.c \
 	src/utils/error.c \
 	src/utils/free.c \

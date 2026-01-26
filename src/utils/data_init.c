@@ -6,7 +6,7 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 15:54:00 by agedikog          #+#    #+#             */
-/*   Updated: 2026/01/24 16:48:08 by iguney           ###   ########.fr       */
+/*   Updated: 2026/01/27 01:00:25 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,17 @@ static void	init_game(t_game *game)
 	game->img_addr.endian = 0;
 }
 
+static void	init_texture_img(t_img *img)
+{
+	img->img = NULL;
+	img->addr = NULL;
+	img->width = 0;
+	img->height = 0;
+	img->bpp = 0;
+	img->line_lenght = 0;
+	img->endian = 0;
+}
+
 static void	init_texture(t_texture *texture)
 {
 	texture->north = NULL;
@@ -35,38 +46,10 @@ static void	init_texture(t_texture *texture)
 	texture->floor_color = -1;
 	texture->ceiling_color = -1;
 	texture->c_count = 0;
-	
-	texture->no.img = NULL;
-	texture->no.addr = NULL;
-	texture->no.width = 0;
-	texture->no.height = 0;
-	texture->no.bpp = 0;
-	texture->no.line_lenght = 0;
-	texture->no.endian = 0;
-	
-	texture->so.img = NULL;
-	texture->so.addr = NULL;
-	texture->so.width = 0;
-	texture->so.height = 0;
-	texture->so.bpp = 0;
-	texture->so.line_lenght = 0;
-	texture->so.endian = 0;
-	
-	texture->we.img = NULL;
-	texture->we.addr = NULL;
-	texture->we.width = 0;
-	texture->we.height = 0;
-	texture->we.bpp = 0;
-	texture->we.line_lenght = 0;
-	texture->we.endian = 0;
-	
-	texture->ea.img = NULL;
-	texture->ea.addr = NULL;
-	texture->ea.width = 0;
-	texture->ea.height = 0;
-	texture->ea.bpp = 0;
-	texture->ea.line_lenght = 0;
-	texture->ea.endian = 0;
+	init_texture_img(&texture->no);
+	init_texture_img(&texture->so);
+	init_texture_img(&texture->we);
+	init_texture_img(&texture->ea);
 }
 
 static void	init_map(t_map *map)
