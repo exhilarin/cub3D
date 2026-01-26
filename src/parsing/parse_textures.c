@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agedikog <agedikog@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 15:53:36 by agedikog          #+#    #+#             */
-/*   Updated: 2026/01/08 19:17:50 by agedikog         ###   ########.fr       */
+/*   Updated: 2026/01/27 00:49:54 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static void	assign_texture(char **dest, char *path, t_game *game)
 	if (*dest != NULL)
 	{
 		free(path);
+		free_game(game);
 		ft_perror("Error\nDuplicate texture found\n");
 	}
 	*dest = path;
@@ -54,7 +55,10 @@ void	parse_textures(char *line, t_game *game)
 
 	path = get_path(line, 2);
 	if (!path)
+	{
+		free_game(game);
 		ft_perror("Error\nMalloc failed in texture parsing\n");
+	}
 	if (ft_strncmp(line, "NO", 2) == 0)
 		assign_texture(&game->textures.north, path, game);
 	else if (ft_strncmp(line, "SO", 2) == 0)
@@ -66,6 +70,7 @@ void	parse_textures(char *line, t_game *game)
 	else
 	{
 		free(path);
+		free_game(game);
 		ft_perror("Error\nUnknown texture identifier\n");
 	}
 }

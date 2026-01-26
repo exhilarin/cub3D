@@ -6,7 +6,7 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 15:54:45 by agedikog          #+#    #+#             */
-/*   Updated: 2026/01/24 16:49:38 by iguney           ###   ########.fr       */
+/*   Updated: 2026/01/27 01:08:30 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,21 @@ void	free_game(t_game *game)
 	free_mlx(game);
 }
 
-void free_mlx(t_game *game)
+void	free_mlx(t_game *game)
 {
-    if (game->win)
-        mlx_destroy_window(game->mlx, game->win);
-    if (game->image)
-        mlx_destroy_image(game->mlx, game->image);
-    if (game->mlx)
+	if (game->textures.no.img)
+		mlx_destroy_image(game->mlx, game->textures.no.img);
+	if (game->textures.so.img)
+		mlx_destroy_image(game->mlx, game->textures.so.img);
+	if (game->textures.we.img)
+		mlx_destroy_image(game->mlx, game->textures.we.img);
+	if (game->textures.ea.img)
+		mlx_destroy_image(game->mlx, game->textures.ea.img);
+	if (game->win)
+		mlx_destroy_window(game->mlx, game->win);
+	if (game->image)
+		mlx_destroy_image(game->mlx, game->image);
+	if (game->mlx)
 		mlx_destroy_display(game->mlx);
 	free(game->mlx);
 }

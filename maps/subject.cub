@@ -1,7 +1,7 @@
-NO ./textures/wall/front.xpm
-SO ./textures/wall/front.xpm
-WE ./textures/wall/side.xpm
-EA ./textures/wall/side.xpm
+NO ./textures/bluestone.xpm
+SO ./textures/eagle.xpm
+WE ./textures/sky_1.xpm
+EA ./textures/wood.xpm
 
 F 220,100,0
 C 225,30,0
