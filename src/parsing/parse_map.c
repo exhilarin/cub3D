@@ -6,7 +6,7 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 15:53:24 by agedikog          #+#    #+#             */
-/*   Updated: 2026/01/27 00:51:34 by iguney           ###   ########.fr       */
+/*   Updated: 2026/01/27 05:16:50 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ int	parse_map(char *first_line, int fd, t_game *game)
 	if (!check_map_is_closed(map_str))
 	{
 		free(map_str);
+		free(first_line);
 		free_game(game);
 		ft_perror("Error\nEmpty line inside map detected\n");
 	}

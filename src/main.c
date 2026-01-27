@@ -6,7 +6,7 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 21:04:49 by ilyas-guney       #+#    #+#             */
-/*   Updated: 2026/01/27 01:00:25 by iguney           ###   ########.fr       */
+/*   Updated: 2026/01/27 06:01:08 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,19 @@
 
 static int	check_file_extension(char *filename)
 {
-	int	len;
+	char	*last_slash;
+	char	*name;
+	int		len;
 
-	len = ft_strlen(filename);
-	if (len < 4)
+	last_slash = ft_strrchr(filename, '/');
+	if (last_slash)
+		name = last_slash + 1;
+	else
+		name = filename;
+	len = ft_strlen(name);
+	if (len <= 4)
 		return (0);
-	return (ft_strncmp(&filename[len - 4], ".cub", 4) == 0);
+	return (ft_strncmp(&name[len - 4], ".cub", 4) == 0);
 }
 
 int	main(int argc, char **argv)

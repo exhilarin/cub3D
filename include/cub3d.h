@@ -6,7 +6,7 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 21:07:56 by ilyas-guney       #+#    #+#             */
-/*   Updated: 2026/01/27 01:55:52 by iguney           ###   ########.fr       */
+/*   Updated: 2026/01/27 06:22:38 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void	check_all_elements(t_game *game);
 int		split_len(char **tab);
 int		check_isdigit(char *str);
 int		calculate_rgb(char **rgb);
+void	check_adjacent_commas(char *line, char **rgb, t_game *game);
+int		count_commas(char *line);
 
 /* --- Utils Functions --- */
 void	ft_perror(const char *str);
