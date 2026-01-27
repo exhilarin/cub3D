@@ -3,7 +3,7 @@ SO ./textures/wall/front.xpm
 WE ./textures/wall/side.xpm
 EA ./textures/wall/side.xpm
 
-F 150,75
+F 150,75,12
 C 135,206,235
 
 11111111111111111111111111111111111111111111111

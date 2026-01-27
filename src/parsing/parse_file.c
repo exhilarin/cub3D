@@ -6,7 +6,7 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 15:53:11 by agedikog          #+#    #+#             */
-/*   Updated: 2026/01/27 01:00:25 by iguney           ###   ########.fr       */
+/*   Updated: 2026/01/27 06:22:38 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,15 @@ static int	process_line(char *line, t_game *game)
 		parse_colors(&line[i], game);
 	else if (is_map_line(line))
 	{
-		if (game->textures.c_count != 6)
-		{
-			free_game(game);
-			ft_perror("Error\nAll elements must be defined before map\n");
-		}
-		return (1);
+		if (game->textures.c_count == 6)
+			return (1);
+		free(line);
+		free_game(game);
+		ft_perror("Error\nAll elements must be defined before map\n");
 	}
 	else
 	{
+		free(line);
 		free_game(game);
 		ft_perror("Error\nUnknown identifier in map file\n");
 	}
@@ -78,10 +78,17 @@ static int	read_file_lines(t_game *game)
 
 static void	validate_file_opening(char *file, t_game *game)
 {
-	int	len;
+	char	*last_slash;
+	char	*name;
+	int		len;
 
-	len = ft_strlen(file);
-	if (len < 4 || ft_strncmp(&file[len - 4], ".cub", 4) != 0)
+	last_slash = ft_strrchr(file, '/');
+	if (last_slash)
+		name = last_slash + 1;
+	else
+		name = file;
+	len = ft_strlen(name);
+	if (len < 4 || ft_strncmp(&name[len - 4], ".cub", 4) != 0)
 	{
 		free_game(game);
 		ft_perror("Error\nMap file must have .cub extension\n");

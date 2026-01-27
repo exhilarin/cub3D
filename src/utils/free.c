@@ -6,7 +6,7 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 15:54:45 by agedikog          #+#    #+#             */
-/*   Updated: 2026/01/27 01:08:30 by iguney           ###   ########.fr       */
+/*   Updated: 2026/01/27 05:23:22 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	free_split(char **tab)
 
 void	free_game(t_game *game)
 {
+	char	*temp;
+
 	if (game->textures.north)
 		free(game->textures.north);
 	if (game->textures.south)
@@ -40,7 +42,16 @@ void	free_game(t_game *game)
 	if (game->map.grid)
 		free_split(game->map.grid);
 	if (game->map_fd >= 0)
+	{
+		while (1)
+		{
+			temp = get_next_line(game->map_fd);
+			if (!temp)
+				break ;
+			free(temp);
+		}
 		close(game->map_fd);
+	}
 	free_mlx(game);
 }
 
