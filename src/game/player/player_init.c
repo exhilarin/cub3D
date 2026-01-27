@@ -6,7 +6,7 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/01/27 01:32:35 by iguney           ###   ########.fr       */
+/*   Updated: 2026/01/27 06:33:04 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ void	init_player(t_game *game)
 	game->player.move_right = 0;
 	game->player.rotate_left = 0;
 	game->player.rotate_right = 0;
-	game->player.x = game->map.player_x + 0.5;
-	game->player.y = game->map.player_y + 0.5;
+	game->player.x = game->map.player_x + 0.2;
+	game->player.y = game->map.player_y + 0.2;
 	set_dir(game);
 	set_plane(game);
 }
