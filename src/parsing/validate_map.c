@@ -6,7 +6,7 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 15:53:49 by agedikog          #+#    #+#             */
-/*   Updated: 2026/01/27 00:49:54 by iguney           ###   ########.fr       */
+/*   Updated: 2026/01/30 02:47:29 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,5 @@ void	validate_map(t_game *game)
 		free_game(game);
 		ft_perror("Error\nMap must have exactly one player start position\n");
 	}
+	validate_map_connectivity(game);
 }

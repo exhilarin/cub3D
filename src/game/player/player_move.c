@@ -6,7 +6,7 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 23:08:20 by iguney            #+#    #+#             */
-/*   Updated: 2026/01/27 01:55:52 by iguney           ###   ########.fr       */
+/*   Updated: 2026/01/30 01:15:03 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,23 +67,23 @@ static void	move_player(t_game *game)
 	game->player.new_y = game->player.y;
 	if (game->player.move_forward)
 	{
-		game->player.new_x += game->player.dir_x * game->player.move_speed;
-		game->player.new_y += game->player.dir_y * game->player.move_speed;
+		game->player.new_x += game->player.dir_x * game->player.current_speed;
+		game->player.new_y += game->player.dir_y * game->player.current_speed;
 	}
 	if (game->player.move_backward)
 	{
-		game->player.new_x -= game->player.dir_x * game->player.move_speed;
-		game->player.new_y -= game->player.dir_y * game->player.move_speed;
+		game->player.new_x -= game->player.dir_x * game->player.current_speed;
+		game->player.new_y -= game->player.dir_y * game->player.current_speed;
 	}
 	if (game->player.move_right)
 	{
-		game->player.new_x += game->player.plane_x * game->player.move_speed;
-		game->player.new_y += game->player.plane_y * game->player.move_speed;
+		game->player.new_x += game->player.plane_x * game->player.current_speed;
+		game->player.new_y += game->player.plane_y * game->player.current_speed;
 	}
 	if (game->player.move_left)
 	{
-		game->player.new_x -= game->player.plane_x * game->player.move_speed;
-		game->player.new_y -= game->player.plane_y * game->player.move_speed;
+		game->player.new_x -= game->player.plane_x * game->player.current_speed;
+		game->player.new_y -= game->player.plane_y * game->player.current_speed;
 	}
 	if (collision_detection(game))
 		move(game);
@@ -93,4 +93,18 @@ void	update_player(t_game *game)
 {
 	move_player(game);
 	rotate_player(game);
+}
+
+void	update_player_speed(t_game *game)
+{
+	int	moving;
+
+	moving = game->player.move_forward || game->player.move_backward
+		|| game->player.move_left || game->player.move_right;
+	if (moving)
+		game->player.current_speed = game->player.move_speed;
+	else
+		game->player.current_speed = 0;
+	if (game->player.shift_pressed && moving)
+		game->player.current_speed *= SLOW_WALK_FACTOR;
 }

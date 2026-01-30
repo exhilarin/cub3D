@@ -6,7 +6,7 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/01/27 01:32:35 by iguney           ###   ########.fr       */
+/*   Updated: 2026/01/30 01:10:12 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,12 +100,16 @@ typedef struct s_player
 	double	new_y;
 	double	move_speed;
 	double	rotate_speed;
+	double	current_speed;
+	double	target_speed;
 	int		move_forward;
 	int		move_backward;
 	int		move_left;
 	int		move_right;
 	int		rotate_left;
 	int		rotate_right;
+	int		shift_pressed;
+	int		last_mouse_x;
 }	t_player;
 
 typedef struct s_ray
