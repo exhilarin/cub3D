@@ -6,7 +6,7 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/01/27 01:32:35 by iguney           ###   ########.fr       */
+/*   Updated: 2026/01/30 01:10:12 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static int	key_press(int keycode, t_game *game)
 		game->player.rotate_left = 1;
 	else if (keycode == KEY_RIGHT)
 		game->player.rotate_right = 1;
+	else if (keycode == KEY_SHIFT)
+		game->player.shift_pressed = 1;
 	else if (keycode == KEY_ESC)
 		exit_game(game);
 	return (0);
@@ -45,6 +47,8 @@ static int	key_release(int keycode, t_game *game)
 		game->player.rotate_left = 0;
 	else if (keycode == KEY_RIGHT)
 		game->player.rotate_right = 0;
+	else if (keycode == KEY_SHIFT)
+		game->player.shift_pressed = 0;
 	return (0);
 }
 
@@ -52,4 +56,5 @@ void	key_hook(t_game *game)
 {
 	mlx_hook(game->win, 2, 1L << 0, key_press, game);
 	mlx_hook(game->win, 3, 1L << 1, key_release, game);
+	mlx_hook(game->win, 6, 1L << 6, handle_mouse_move, game);
 }

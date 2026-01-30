@@ -6,7 +6,7 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/01/27 01:55:52 by iguney           ###   ########.fr       */
+/*   Updated: 2026/01/30 01:10:12 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static void	draw_floor_ceiling(t_game *game)
 
 void	render_frame(t_game *game)
 {
+	update_player_speed(game);
 	update_player(game);
 	draw_floor_ceiling(game);
 	draw_walls(game);

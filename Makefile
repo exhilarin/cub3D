@@ -21,6 +21,7 @@ SRCS = \
 	src/parsing/parse_colors_utils.c \
 	src/parsing/parse_map.c \
 	src/parsing/validate_map.c \
+	src/parsing/validate_map_utils.c \
 	src/game/game.c \
 	src/game/game_init.c \
 	src/game/player/player_init.c \

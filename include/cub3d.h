@@ -6,7 +6,7 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 21:07:56 by ilyas-guney       #+#    #+#             */
-/*   Updated: 2026/01/27 06:22:38 by iguney           ###   ########.fr       */
+/*   Updated: 2026/01/30 02:47:29 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	parse_textures(char *line, t_game *game);
 void	parse_colors(char *line, t_game *game);
 int		parse_map(char *first_line, int fd, t_game *game);
 void	validate_map(t_game *game);
+void	validate_map_connectivity(t_game *game);
 int		is_map_line(char *line);
 int		is_texture_id(char *s);
 int		is_color_id(char *s);
@@ -65,6 +66,8 @@ void	init_mlx_display(t_game *game);
 void	init_mlx_image(t_game *game);
 void	load_texture(t_game *game, t_img *texture, char *path);
 void	load_textures(t_game *game);
+void	update_player_speed(t_game *game);
+int		handle_mouse_move(int x, int y, t_game *game);
 
 /* --- Raycasting Functions --- */
 void	draw_walls(t_game *game);
