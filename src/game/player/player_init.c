@@ -73,8 +73,8 @@ void	init_player(t_game *game)
 	game->player.rotate_left = 0;
 	game->player.rotate_right = 0;
 	game->player.shift_pressed = 0;
-	game->player.x = game->map.player_x + 0.2;
-	game->player.y = game->map.player_y + 0.2;
+	game->player.x = game->map.player_x;
+	game->player.y = game->map.player_y;
 	set_dir(game);
 	set_plane(game);
 }

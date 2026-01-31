@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d_bonus.h                                      :+:      :+:    :+:   */
+/*   minimap_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,31 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_BONUS_H
-# define CUB3D_BONUS_H
+#ifndef MINIMAP_BONUS_H
+# define MINIMAP_BONUS_H
 
-# include "cub3d.h"
+# include "cub3d_bonus.h"
 
-/* --- Mouse Rotation Bonus --- */
-int		handle_mouse_move_bonus(int x, int y, t_game *game);
-void	init_mouse_bonus(t_game *game);
+/* Minimap configuration - Pokemon Theme */
+# define MINIMAP_SIZE 200
+# define MINIMAP_MARGIN 20
+# define MINIMAP_BG_COLOR 0x90EE90
+# define MINIMAP_WALL_COLOR 0x228B22
+# define MINIMAP_PLAYER_COLOR 0xFF3030
+# define MINIMAP_PLAYER_SIZE 5
+# define MINIMAP_BORDER_COLOR 0x8B4513
 
-/* --- Wall Collision Bonus --- */
-int		check_wall_bonus(t_game *game, int x, int y);
-int		collision_detection_bonus(t_game *game);
-void	move_bonus(t_game *game);
-
-/* --- Player Movement Bonus (with collision) --- */
-void	update_player_bonus(t_game *game);
-void	update_player_speed_bonus(t_game *game);
-
-/* --- Game Loop Bonus --- */
-void	game_loop_bonus(t_game *game);
-void	render_frame_bonus(t_game *game);
-
-/* --- Minimap Bonus --- */
-typedef struct s_minimap	t_minimap;
+/* Minimap initialization and drawing functions */
 void	init_minimap(t_game *game, t_minimap *minimap);
 void	draw_minimap(t_game *game, t_minimap *minimap);
+void	draw_minimap_with_border(t_game *game, t_minimap *minimap);
 
 #endif

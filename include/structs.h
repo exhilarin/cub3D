@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/01/30 01:10:12 by iguney           ###   ########.fr       */
+/*   Updated: 2026/02/01 01:37:18 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,16 @@ typedef struct s_ray
 	int		map_y;
 }	t_ray;
 
+typedef struct s_minimap
+{
+	int		size;
+	int		offset_x;
+	int		offset_y;
+	int		tile_size;
+	int		player_x;
+	int		player_y;
+}	t_minimap;
+
 typedef struct s_game
 {
 	t_texture	textures;
@@ -131,6 +141,7 @@ typedef struct s_game
 	t_dda		dda;
 	t_wall		wall;
 	t_texinfo	tex;
+	t_minimap	minimap;
 	void		*mlx;
 	void		*win;
 	void		*image;

@@ -1,10 +1,10 @@
-NO   	 	 	 	 	 	./textures/wall/front.xpm
-			F 100,1,200										
-SO 										./textures/wall/front.xpm
-																				EA ./textures/wall/side.xpm
+NO ./textures/wall.xpm
+SO ./textures/wall.xpm
+WE ./textures/wall.xpm
+EA ./textures/wall.xpm
 
-C 										 	 50,100,150 
-WE ./textures/wall/side.xpm
+F 79,127,31
+C 109,182,232
 
 1111111111111
 1000000000001

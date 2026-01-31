@@ -44,6 +44,7 @@ BONUS_SRCS = \
 	bonus/collisions_bonus.c \
 	bonus/player_movement_bonus.c \
 	bonus/render_bonus.c \
+	bonus/minimap_bonus.c \
 	src/parsing/parse_file.c \
 	src/parsing/parse_file_utils.c \
 	src/parsing/parse_textures.c \
@@ -73,7 +74,8 @@ BONUS_OBJS_BONUS = $(BUILD_DIR)/bonus/main_bonus.o \
 	$(BUILD_DIR)/bonus/mouse_rotation_bonus.o \
 	$(BUILD_DIR)/bonus/collisions_bonus.o \
 	$(BUILD_DIR)/bonus/player_movement_bonus.o \
-	$(BUILD_DIR)/bonus/render_bonus.o
+	$(BUILD_DIR)/bonus/render_bonus.o \
+	$(BUILD_DIR)/bonus/minimap_bonus.o
 
 BONUS_OBJS_SRC = $(BUILD_DIR)/parsing/parse_file.o \
 	$(BUILD_DIR)/parsing/parse_file_utils.o \

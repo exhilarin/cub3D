@@ -6,11 +6,12 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/01 00:54:35 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/01 01:37:18 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+#include "minimap_bonus.h"
 
 static void	draw_floor_ceiling_bonus(t_game *game)
 {
@@ -45,5 +46,6 @@ void	render_frame_bonus(t_game *game)
 	update_player_bonus(game);
 	draw_floor_ceiling_bonus(game);
 	draw_walls(game);
+	draw_minimap_with_border(game, &game->minimap);
 	mlx_put_image_to_window(game->mlx, game->win, game->image, 0, 0);
 }
