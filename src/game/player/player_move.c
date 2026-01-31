@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_move.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 23:08:20 by iguney            #+#    #+#             */
-/*   Updated: 2026/01/30 01:15:03 by iguney           ###   ########.fr       */
+/*   Updated: 2026/02/01 00:54:35 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,55 +38,28 @@ static void	rotate_player(t_game *game)
 	}
 }
 
-static int	collision_detection(t_game *game)
-{
-	int		map_x;
-	int		map_y;
-	double	margin;
-
-	margin = 0.05;
-	map_x = (int)(game->player.new_x - margin);
-	map_y = (int)(game->player.new_y - margin);
-	if (!check_wall(game, map_x, map_y))
-		return (0);
-	map_x = (int)(game->player.new_x + margin);
-	if (!check_wall(game, map_x, map_y))
-		return (0);
-	map_y = (int)(game->player.new_y + margin);
-	if (!check_wall(game, map_x, map_y))
-		return (0);
-	map_x = (int)(game->player.new_x - margin);
-	if (!check_wall(game, map_x, map_y))
-		return (0);
-	return (1);
-}
-
 static void	move_player(t_game *game)
 {
-	game->player.new_x = game->player.x;
-	game->player.new_y = game->player.y;
 	if (game->player.move_forward)
 	{
-		game->player.new_x += game->player.dir_x * game->player.current_speed;
-		game->player.new_y += game->player.dir_y * game->player.current_speed;
+		game->player.x += game->player.dir_x * game->player.current_speed;
+		game->player.y += game->player.dir_y * game->player.current_speed;
 	}
 	if (game->player.move_backward)
 	{
-		game->player.new_x -= game->player.dir_x * game->player.current_speed;
-		game->player.new_y -= game->player.dir_y * game->player.current_speed;
+		game->player.x -= game->player.dir_x * game->player.current_speed;
+		game->player.y -= game->player.dir_y * game->player.current_speed;
 	}
 	if (game->player.move_right)
 	{
-		game->player.new_x += game->player.plane_x * game->player.current_speed;
-		game->player.new_y += game->player.plane_y * game->player.current_speed;
+		game->player.x += game->player.plane_x * game->player.current_speed;
+		game->player.y += game->player.plane_y * game->player.current_speed;
 	}
 	if (game->player.move_left)
 	{
-		game->player.new_x -= game->player.plane_x * game->player.current_speed;
-		game->player.new_y -= game->player.plane_y * game->player.current_speed;
+		game->player.x -= game->player.plane_x * game->player.current_speed;
+		game->player.y -= game->player.plane_y * game->player.current_speed;
 	}
-	if (collision_detection(game))
-		move(game);
 }
 
 void	update_player(t_game *game)
