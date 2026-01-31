@@ -6,11 +6,12 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/01 00:54:35 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/01 01:37:18 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+#include "minimap_bonus.h"
 
 static void	exit_game_bonus(t_game *game)
 {
@@ -33,6 +34,7 @@ void	game_loop_bonus(t_game *game)
 {
 	init_mlx(game);
 	init_player(game);
+	init_minimap(game, &game->minimap);
 	init_mouse_bonus(game);
 	key_hook_bonus(game);
 	mlx_hook(game->win, 17, 0, close_window_bonus, game);
