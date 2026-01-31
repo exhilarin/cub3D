@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 21:07:56 by ilyas-guney       #+#    #+#             */
-/*   Updated: 2026/01/30 02:47:29 by iguney           ###   ########.fr       */
+/*   Updated: 2026/02/01 00:54:35 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ void	ft_perror(const char *str);
 void	init_data(t_game *game);
 int		is_valid_map_char(char c);
 int		skip_whitespace(char *str);
-int		check_wall(t_game *game, int x, int y);
-void	move(t_game *game);
 
 /* --- Free Functions --- */
 void	free_split(char **tab);
@@ -67,7 +65,6 @@ void	init_mlx_image(t_game *game);
 void	load_texture(t_game *game, t_img *texture, char *path);
 void	load_textures(t_game *game);
 void	update_player_speed(t_game *game);
-int		handle_mouse_move(int x, int y, t_game *game);
 
 /* --- Raycasting Functions --- */
 void	draw_walls(t_game *game);

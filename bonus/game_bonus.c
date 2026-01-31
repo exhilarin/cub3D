@@ -1,18 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_hook.c                                         :+:      :+:    :+:   */
+/*   game_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/27 00:00:00 by iguney            #+#    #+#             */
+/*   Created: 2026/02/01 00:00:00 by iguney            #+#    #+#             */
 /*   Updated: 2026/02/01 00:54:35 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
-static int	key_press(int keycode, t_game *game)
+static void	exit_game_bonus(t_game *game)
+{
+	mlx_loop_end(game->mlx);
+	free_game(game);
+	exit(0);
+}
+
+static int	close_window_bonus(t_game *game)
+{
+	mlx_loop_end(game->mlx);
+	free_game(game);
+	exit(0);
+	return (0);
+}
+
+static void	key_hook_bonus(t_game *game);
+
+void	game_loop_bonus(t_game *game)
+{
+	init_mlx(game);
+	init_player(game);
+	init_mouse_bonus(game);
+	key_hook_bonus(game);
+	mlx_hook(game->win, 17, 0, close_window_bonus, game);
+	mlx_loop_hook(game->mlx, (void *)render_frame_bonus, game);
+	mlx_loop(game->mlx);
+}
+
+static int	key_press_bonus(int keycode, t_game *game)
 {
 	if (keycode == KEY_W)
 		game->player.move_forward = 1;
@@ -29,11 +57,11 @@ static int	key_press(int keycode, t_game *game)
 	else if (keycode == KEY_SHIFT)
 		game->player.shift_pressed = 1;
 	else if (keycode == KEY_ESC)
-		exit_game(game);
+		exit_game_bonus(game);
 	return (0);
 }
 
-static int	key_release(int keycode, t_game *game)
+static int	key_release_bonus(int keycode, t_game *game)
 {
 	if (keycode == KEY_W)
 		game->player.move_forward = 0;
@@ -52,8 +80,9 @@ static int	key_release(int keycode, t_game *game)
 	return (0);
 }
 
-void	key_hook(t_game *game)
+static void	key_hook_bonus(t_game *game)
 {
-	mlx_hook(game->win, 2, 1L << 0, key_press, game);
-	mlx_hook(game->win, 3, 1L << 1, key_release, game);
+	mlx_hook(game->win, 2, 1L << 0, key_press_bonus, game);
+	mlx_hook(game->win, 3, 1L << 1, key_release_bonus, game);
+	mlx_hook(game->win, 6, 1L << 6, handle_mouse_move_bonus, game);
 }
