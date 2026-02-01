@@ -174,6 +174,8 @@ typedef struct s_pokemon
 	void				*sprite;
 	int					anim_offset;
 	int					active;
+	int					fading;
+	int					alpha;
 	int					pokemon_type;
 	int					current_frame;
 	t_img				pikachu_frames[PIKACHU_FRAMES];

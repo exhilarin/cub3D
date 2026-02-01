@@ -30,6 +30,8 @@ void	init_pokemon_bonus(t_game *game)
 		new_poke->map_y = door->map_y;
 		new_poke->anim_offset = 0;
 		new_poke->active = 1;
+		new_poke->fading = 0;
+		new_poke->alpha = MAX_ALPHA;
 		new_poke->sprite = NULL;
 		new_poke->current_frame = 0;
 		poke_type = get_pokemon_type(game->map.grid[door->map_y][door->map_x]);
@@ -63,9 +65,20 @@ void	update_pokemon_bonus(t_game *game)
 	{
 		if (current->active)
 		{
-			current->anim_offset++;
-			if (current->anim_offset > 100)
-				current->anim_offset = 0;
+			if (current->fading)
+			{
+				current->alpha -= FADE_SPEED;
+				if (current->alpha <= 0)
+				{
+					current->active = 0;
+					current->alpha = 0;
+				}
+			}
+			else
+			{
+				current->anim_offset++;
+				if (current->anim_offset > 100)
+					current->anim_offset = 0;
 			if (current->pokemon_type == POKEMON_PIKACHU)
 			{
 				if (current->anim_offset % 10 == 0)
@@ -83,6 +96,7 @@ void	update_pokemon_bonus(t_game *game)
 				if (current->anim_offset % 10 == 0)
 					current->current_frame = (current->current_frame + 1)
 						% CHARIZARD_FRAMES;
+			}
 			}
 		}
 		current = current->next;

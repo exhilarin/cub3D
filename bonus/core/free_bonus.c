@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/01 10:29:03 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/01 22:48:48 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,4 @@ void	free_bonus_resources(t_game *game)
 	free_pokemon_bonus(game);
 	if (game->anim.pokeball_img)
 		mlx_destroy_image(game->mlx, game->anim.pokeball_img);
-	if (game->anim.explosion_img)
-		mlx_destroy_image(game->mlx, game->anim.explosion_img);
 }

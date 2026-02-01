@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/01 09:54:38 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/01 22:48:48 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,6 @@ void	render_frame_bonus(t_game *game)
 	draw_walls(game);
 	draw_doors_bonus(game);
 	draw_pokemon_bonus(game);
-	draw_explosion_animation(game);
 	draw_minimap_with_border(game, &game->minimap);
 	draw_pokeball_animation(game);
 	draw_transparent_image(game, &game->pokeball_hud,

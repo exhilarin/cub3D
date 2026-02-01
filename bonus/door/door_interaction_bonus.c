@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/01 10:29:03 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/01 22:52:19 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	deactivate_pokemon_at(t_game *game, int x, int y)
 	{
 		if (current->map_x == x && current->map_y == y && current->active)
 		{
-			current->active = 0;
+			current->fading = 1;
 			return ;
 		}
 		current = current->next;

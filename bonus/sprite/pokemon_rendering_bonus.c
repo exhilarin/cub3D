@@ -12,16 +12,37 @@
 
 #include "../include/cub3d_bonus.h"
 
+static int	blend_colors(int sprite_color, int bg_color, int alpha)
+{
+	int	r1, g1, b1;
+	int	r2, g2, b2;
+	int	r, g, b;
+
+	r1 = (sprite_color >> 16) & 0xFF;
+	g1 = (sprite_color >> 8) & 0xFF;
+	b1 = sprite_color & 0xFF;
+	r2 = (bg_color >> 16) & 0xFF;
+	g2 = (bg_color >> 8) & 0xFF;
+	b2 = bg_color & 0xFF;
+	r = ((r1 * alpha) + (r2 * (MAX_ALPHA - alpha))) / MAX_ALPHA;
+	g = ((g1 * alpha) + (g2 * (MAX_ALPHA - alpha))) / MAX_ALPHA;
+	b = ((b1 * alpha) + (b2 * (MAX_ALPHA - alpha))) / MAX_ALPHA;
+	return ((r << 16) | (g << 8) | b);
+}
+
 static void	draw_sprite_vertical_line(t_game *game, t_img *sprite, int x, 
-	int sprite_height, int draw_start_y, double sprite_x)
+	int sprite_height, int draw_start_y, double sprite_x, int alpha)
 {
 	int		y;
 	int		d;
 	int		tex_y;
 	int		color;
+	int		blended_color;
 	char	*pixel;
+	int		*buffer;
 
 	y = draw_start_y;
+	buffer = (int *)game->img_addr.addr;
 	while (y < draw_start_y + sprite_height && y < HEIGHT)
 	{
 		if (y >= 0)
@@ -34,9 +55,14 @@ static void	draw_sprite_vertical_line(t_game *game, t_img *sprite, int x,
 						+ (int)sprite_x * (sprite->bpp / 8));
 				color = *(unsigned int *)pixel;
 				if ((color & 0x00FFFFFF) != 0x00FF00FF)
-					*(unsigned int *)(game->img_addr.addr + (y
-								* game->img_addr.line_lenght + x
-								* (game->img_addr.bpp / 8))) = color;
+				{
+					if (alpha < MAX_ALPHA)
+						blended_color = blend_colors(color,
+							buffer[y * LENGHT + x], alpha);
+					else
+						blended_color = color;
+					buffer[y * LENGHT + x] = blended_color;
+				}
 			}
 		}
 		y++;
@@ -93,7 +119,7 @@ static void	render_sprite(t_game *game, t_pokemon *pokemon,
 		if (transform_y > 0 && stripe >= 0 && stripe < LENGHT
 			&& tex_x >= 0 && tex_x < current_sprite->width)
 			draw_sprite_vertical_line(game, current_sprite, stripe,
-				sprite_height, draw_start_y, tex_x);
+					sprite_height, draw_start_y, tex_x, pokemon->alpha);
 		stripe++;
 	}
 }
@@ -144,7 +170,7 @@ void	draw_pokemon_bonus(t_game *game)
 	current = game->pokemons;
 	while (current)
 	{
-		if (current->active)
+		if (current->active && current->alpha > 0)
 		{
 			sprite_x = current->map_x + 0.5 - game->player.x;
 			sprite_y = current->map_y + 0.5 - game->player.y;
