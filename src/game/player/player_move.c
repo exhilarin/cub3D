@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 23:08:20 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/01 00:54:35 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/01 07:05:54 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,4 @@ void	update_player_speed(t_game *game)
 		game->player.current_speed = game->player.move_speed;
 	else
 		game->player.current_speed = 0;
-	if (game->player.shift_pressed && moving)
-		game->player.current_speed *= SLOW_WALK_FACTOR;
 }
