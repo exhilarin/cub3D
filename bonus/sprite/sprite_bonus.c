@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/01 09:54:38 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/01 10:29:03 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ static void	load_charizard_frames(t_game *game, t_pokemon *poke)
 	}
 }
 
-/* Initialize Pokemon sprites for each door */
 void	init_pokemon_bonus(t_game *game)
 {
 	t_door		*door;
@@ -130,7 +129,6 @@ void	init_pokemon_bonus(t_game *game)
 	}
 }
 
-/* Update Pokemon animation (simple bobbing effect) */
 void	update_pokemon_bonus(t_game *game)
 {
 	t_pokemon	*current;
