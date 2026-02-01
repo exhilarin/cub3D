@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/01 02:21:09 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/01 02:25:14 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define CUB3D_BONUS_H
 
 # include "cub3d.h"
+# include "minimap/minimap_bonus.h"
+# include "door/door_bonus.h"
 
 /* --- Mouse Rotation Bonus --- */
 int		handle_mouse_move_bonus(int x, int y, t_game *game);

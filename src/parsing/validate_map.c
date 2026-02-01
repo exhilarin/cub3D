@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 15:53:49 by agedikog          #+#    #+#             */
-/*   Updated: 2026/01/30 02:47:29 by iguney           ###   ########.fr       */
+/*   Updated: 2026/02/01 03:13:59 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void	validate_cell(t_game *game, int x, int y)
 	}
 	check_player(game, x, y);
 	if (game->map.grid[y][x] == '0'
-		|| ft_strchr("NSEW", game->map.grid[y][x]))
+		|| ft_strchr("NSEWPBC", game->map.grid[y][x]))
 	{
 		if (!is_surrounded(game, x, y))
 		{

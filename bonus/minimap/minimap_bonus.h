@@ -6,14 +6,13 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/01 01:37:18 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/01 02:25:14 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIMAP_BONUS_H
 # define MINIMAP_BONUS_H
 
-# include "cub3d_bonus.h"
 
 /* Minimap configuration - Pokemon Theme */
 # define MINIMAP_SIZE 200

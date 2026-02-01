@@ -6,11 +6,19 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/01 01:37:18 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/01 02:25:15 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minimap_bonus.h"
+#include "../cub3d_bonus.h"
+
+typedef struct s_square
+{
+	int	x;
+	int	y;
+	int	size;
+	int	color;
+}	t_square;
 
 static void	put_pixel_minimap(t_game *game, int x, int y, int color)
 {
@@ -23,18 +31,18 @@ static void	put_pixel_minimap(t_game *game, int x, int y, int color)
 	*(unsigned int *)pixel_addr = color;
 }
 
-static void	draw_square(t_game *game, int x, int y, int size, int color)
+static void	draw_square(t_game *game, t_square *sq)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < size)
+	while (i < sq->size)
 	{
 		j = 0;
-		while (j < size)
+		while (j < sq->size)
 		{
-			put_pixel_minimap(game, x + j, y + i, color);
+			put_pixel_minimap(game, sq->x + j, sq->y + i, sq->color);
 			j++;
 		}
 		i++;
@@ -54,9 +62,10 @@ static int	is_outer_wall(t_game *game, int mx, int my)
 
 static void	draw_minimap_tile(t_game *game, t_minimap *mm, int mx, int my)
 {
-	int	screen_x;
-	int	screen_y;
-	int	color;
+	int			screen_x;
+	int			screen_y;
+	int			color;
+	t_square	sq;
 
 	if (mx < 0 || mx >= game->map.width || my < 0 || my >= game->map.height)
 		return ;
@@ -72,18 +81,19 @@ static void	draw_minimap_tile(t_game *game, t_minimap *mm, int mx, int my)
 		color = MINIMAP_WALL_COLOR;
 	else
 		color = MINIMAP_BG_COLOR;
-	draw_square(game, screen_x, screen_y, mm->tile_size, color);
+	sq.x = screen_x;
+	sq.y = screen_y;
+	sq.size = mm->tile_size;
+	sq.color = color;
+	draw_square(game, &sq);
 }
 
-static void	draw_player_on_minimap(t_game *game, t_minimap *mm)
+static void	draw_player_square(t_game *game, t_minimap *mm)
 {
-	int		screen_x;
-	int		screen_y;
-	int		i;
-	int		j;
-	double	angle;
-	int		dir_x;
-	int		dir_y;
+	int	screen_x;
+	int	screen_y;
+	int	i;
+	int	j;
 
 	screen_x = mm->player_x - MINIMAP_PLAYER_SIZE / 2;
 	screen_y = mm->player_y - MINIMAP_PLAYER_SIZE / 2;
@@ -99,6 +109,15 @@ static void	draw_player_on_minimap(t_game *game, t_minimap *mm)
 		}
 		i++;
 	}
+}
+
+static void	draw_player_direction(t_game *game, t_minimap *mm)
+{
+	double	angle;
+	int		dir_x;
+	int		dir_y;
+	int		i;
+
 	angle = atan2(game->player.dir_y, game->player.dir_x);
 	dir_x = (int)(cos(angle) * (MINIMAP_PLAYER_SIZE + 2));
 	dir_y = (int)(sin(angle) * (MINIMAP_PLAYER_SIZE + 2));
@@ -110,6 +129,12 @@ static void	draw_player_on_minimap(t_game *game, t_minimap *mm)
 			/ (MINIMAP_PLAYER_SIZE + 2), MINIMAP_PLAYER_COLOR);
 		i++;
 	}
+}
+
+static void	draw_player_on_minimap(t_game *game, t_minimap *mm)
+{
+	draw_player_square(game, mm);
+	draw_player_direction(game, mm);
 }
 
 void	init_minimap(t_game *game, t_minimap *minimap)

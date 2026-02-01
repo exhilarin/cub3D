@@ -6,16 +6,16 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/01 01:37:18 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/01 02:25:14 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d_bonus.h"
-#include "minimap_bonus.h"
+#include "../cub3d_bonus.h"
 
 static void	exit_game_bonus(t_game *game)
 {
 	mlx_loop_end(game->mlx);
+	free_bonus_resources(game);
 	free_game(game);
 	exit(0);
 }
@@ -23,6 +23,7 @@ static void	exit_game_bonus(t_game *game)
 static int	close_window_bonus(t_game *game)
 {
 	mlx_loop_end(game->mlx);
+	free_bonus_resources(game);
 	free_game(game);
 	exit(0);
 	return (0);
@@ -35,6 +36,9 @@ void	game_loop_bonus(t_game *game)
 	init_mlx(game);
 	init_player(game);
 	init_minimap(game, &game->minimap);
+	init_doors_bonus(game);
+	init_pokemon_bonus(game);
+	init_animations_bonus(game);
 	init_mouse_bonus(game);
 	key_hook_bonus(game);
 	mlx_hook(game->win, 17, 0, close_window_bonus, game);
@@ -60,6 +64,8 @@ static int	key_press_bonus(int keycode, t_game *game)
 		game->player.shift_pressed = 1;
 	else if (keycode == KEY_ESC)
 		exit_game_bonus(game);
+	else if (keycode == KEY_E)
+		trigger_door_bonus(game);
 	return (0);
 }
 

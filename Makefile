@@ -38,13 +38,18 @@ SRCS = \
 	src/utils/data_init.c
 
 BONUS_SRCS = \
-	bonus/main_bonus.c \
-	bonus/game_bonus.c \
-	bonus/mouse_rotation_bonus.c \
-	bonus/collisions_bonus.c \
-	bonus/player_movement_bonus.c \
-	bonus/render_bonus.c \
-	bonus/minimap_bonus.c \
+	bonus/core/main_bonus.c \
+	bonus/core/game_bonus.c \
+	bonus/core/render_bonus.c \
+	bonus/core/free_bonus.c \
+	bonus/player/mouse_rotation_bonus.c \
+	bonus/player/collisions_bonus.c \
+	bonus/player/player_movement_bonus.c \
+	bonus/minimap/minimap_bonus.c \
+	bonus/door/door_bonus.c \
+	bonus/door/pokemon_bonus.c \
+	bonus/door/animation_bonus.c \
+	bonus/door/door_interaction_bonus.c \
 	src/parsing/parse_file.c \
 	src/parsing/parse_file_utils.c \
 	src/parsing/parse_textures.c \
@@ -69,13 +74,18 @@ GNL_SRCS = \
 
 OBJS = $(SRCS:src/%.c=$(BUILD_DIR)/%.o)
 
-BONUS_OBJS_BONUS = $(BUILD_DIR)/bonus/main_bonus.o \
-	$(BUILD_DIR)/bonus/game_bonus.o \
-	$(BUILD_DIR)/bonus/mouse_rotation_bonus.o \
-	$(BUILD_DIR)/bonus/collisions_bonus.o \
-	$(BUILD_DIR)/bonus/player_movement_bonus.o \
-	$(BUILD_DIR)/bonus/render_bonus.o \
-	$(BUILD_DIR)/bonus/minimap_bonus.o
+BONUS_OBJS_BONUS = $(BUILD_DIR)/bonus/core/main_bonus.o \
+	$(BUILD_DIR)/bonus/core/game_bonus.o \
+	$(BUILD_DIR)/bonus/core/render_bonus.o \
+	$(BUILD_DIR)/bonus/core/free_bonus.o \
+	$(BUILD_DIR)/bonus/player/mouse_rotation_bonus.o \
+	$(BUILD_DIR)/bonus/player/collisions_bonus.o \
+	$(BUILD_DIR)/bonus/player/player_movement_bonus.o \
+	$(BUILD_DIR)/bonus/minimap/minimap_bonus.o \
+	$(BUILD_DIR)/bonus/door/door_bonus.o \
+	$(BUILD_DIR)/bonus/door/pokemon_bonus.o \
+	$(BUILD_DIR)/bonus/door/animation_bonus.o \
+	$(BUILD_DIR)/bonus/door/door_interaction_bonus.o
 
 BONUS_OBJS_SRC = $(BUILD_DIR)/parsing/parse_file.o \
 	$(BUILD_DIR)/parsing/parse_file_utils.o \
