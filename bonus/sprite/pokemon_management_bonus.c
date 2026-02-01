@@ -63,20 +63,32 @@ void	update_pokemon_bonus(t_game *game)
 	current = game->pokemons;
 	while (current)
 	{
-		if (current->active)
+		if (current->fading == 1)
 		{
-			if (current->fading)
+			current->alpha -= FADE_SPEED;
+			if (current->alpha <= 0)
 			{
-				current->alpha -= FADE_SPEED;
-				if (current->alpha <= 0)
-				{
-					current->active = 0;
-					current->alpha = 0;
-				}
+				current->active = 0;
+				current->alpha = 0;
+				current->fading = 0;
 			}
+		}
+		else if (current->fading == 2)
+		{
+			if (current->alpha == 0)
+				current->alpha = FADE_SPEED;
 			else
+				current->alpha += FADE_SPEED;
+			if (current->alpha >= MAX_ALPHA)
 			{
-				current->anim_offset++;
+				current->active = 1;
+				current->alpha = MAX_ALPHA;
+				current->fading = 0;
+			}
+		}
+		if (current->active && current->fading == 0)
+		{
+			current->anim_offset++;
 				if (current->anim_offset > 100)
 					current->anim_offset = 0;
 			if (current->pokemon_type == POKEMON_PIKACHU)
@@ -96,7 +108,6 @@ void	update_pokemon_bonus(t_game *game)
 				if (current->anim_offset % 10 == 0)
 					current->current_frame = (current->current_frame + 1)
 						% CHARIZARD_FRAMES;
-			}
 			}
 		}
 		current = current->next;

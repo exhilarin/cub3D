@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/01 22:52:19 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/01 23:23:25 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,35 @@ typedef struct s_door_search
 static void	deactivate_pokemon_at(t_game *game, int x, int y)
 {
 	t_pokemon	*current;
+	char		cell;
+	int			player_x;
+	int			player_y;
 
+	player_x = (int)game->player.x;
+	player_y = (int)game->player.y;
 	current = game->pokemons;
 	while (current)
 	{
-		if (current->map_x == x && current->map_y == y && current->active)
+		if (current->map_x == x && current->map_y == y)
 		{
-			current->fading = 1;
+			if (current->active)
+			{
+				current->fading = 1;
+				game->map.grid[y][x] = '0';
+			}
+			else if (player_x != x || player_y != y)
+			{
+				current->fading = 2;
+				if (current->pokemon_type == POKEMON_PIKACHU)
+					cell = 'P';
+				else if (current->pokemon_type == POKEMON_SNORLAX)
+					cell = 'B';
+				else if (current->pokemon_type == POKEMON_CHARIZARD)
+					cell = 'C';
+				else
+					cell = '0';
+				game->map.grid[y][x] = cell;
+			}
 			return ;
 		}
 		current = current->next;
@@ -40,7 +62,7 @@ static void	deactivate_pokemon_at(t_game *game, int x, int y)
 static void	check_door_distance(t_game *game, t_door *door, 
 							t_door_search *search)
 {
-	if (door->state != DOOR_CLOSED || !is_player_near_door(game, door))
+	if (!is_player_near_door(game, door))
 		return ;
 	search->dx = game->player.x - (door->map_x + 0.5);
 	search->dy = game->player.y - (door->map_y + 0.5);
@@ -54,13 +76,17 @@ static void	check_door_distance(t_game *game, t_door *door,
 
 static void	open_door(t_game *game, t_door *door)
 {
-	door->state = DOOR_OPENING;
-	game->anim.type = ANIM_POKEBALL;
-	game->anim.frame_count = 0;
-	game->anim.map_x = door->map_x;
-	game->anim.map_y = door->map_y;
+	if (door->state == DOOR_CLOSED)
+	{
+		door->state = DOOR_OPENING;
+		game->anim.type = ANIM_POKEBALL;
+		game->anim.frame_count = 0;
+		game->anim.map_x = door->map_x;
+		game->anim.map_y = door->map_y;
+	}
+	else if (door->state == DOOR_OPEN)
+		door->state = DOOR_CLOSED;
 	deactivate_pokemon_at(game, door->map_x, door->map_y);
-	remove_door_from_map(game, door->map_x, door->map_y);
 }
 
 void	trigger_door_bonus(t_game *game)
