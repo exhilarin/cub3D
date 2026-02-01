@@ -141,9 +141,9 @@ void	render_frame_bonus(t_game *game)
 	draw_walls(game);
 	draw_doors_bonus(game);
 	draw_pokemon_bonus(game);
+	draw_pokeball_animation(game);
 	draw_explosion_animation(game);
 	draw_minimap_with_border(game, &game->minimap);
-	draw_pokeball_animation(game);
 	draw_transparent_image(game, &game->pokeball_hud,
 		LENGHT - game->pokeball_hud.width, HEIGHT - game->pokeball_hud.height);
 	mlx_put_image_to_window(game->mlx, game->win, game->image, 0, 0);
