@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/01 02:21:09 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/01 07:05:54 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,6 @@ typedef struct s_player
 	int		move_right;
 	int		rotate_left;
 	int		rotate_right;
-	int		shift_pressed;
-	int		last_mouse_x;
 }	t_player;
 
 typedef struct s_ray
@@ -121,59 +119,6 @@ typedef struct s_ray
 	int		map_y;
 }	t_ray;
 
-typedef struct s_minimap
-{
-	int		size;
-	int		offset_x;
-	int		offset_y;
-	int		tile_size;
-	int		player_x;
-	int		player_y;
-}	t_minimap;
-
-typedef enum e_door_state
-{
-	DOOR_CLOSED,
-	DOOR_OPENING,
-	DOOR_OPEN
-}	t_door_state;
-
-typedef enum e_anim_type
-{
-	ANIM_NONE,
-	ANIM_POKEBALL,
-	ANIM_EXPLOSION
-}	t_anim_type;
-
-typedef struct s_door
-{
-	int				map_x;
-	int				map_y;
-	t_door_state	state;
-	void			*sprite;
-	struct s_door	*next;
-}	t_door;
-
-typedef struct s_pokemon
-{
-	int					map_x;
-	int					map_y;
-	void				*sprite;
-	int					anim_offset;
-	int					active;
-	struct s_pokemon	*next;
-}	t_pokemon;
-
-typedef struct s_anim
-{
-	t_anim_type	type;
-	int			frame_count;
-	int			map_x;
-	int			map_y;
-	void		*pokeball_img;
-	void		*explosion_img;
-}	t_anim;
-
 typedef struct s_game
 {
 	t_texture	textures;
@@ -184,10 +129,6 @@ typedef struct s_game
 	t_dda		dda;
 	t_wall		wall;
 	t_texinfo	tex;
-	t_minimap	minimap;
-	t_door		*doors;
-	t_pokemon	*pokemons;
-	t_anim		anim;
 	void		*mlx;
 	void		*win;
 	void		*image;

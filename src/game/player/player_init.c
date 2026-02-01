@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/01 02:21:09 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/01 07:05:54 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ void	init_player(t_game *game)
 	game->player.move_right = 0;
 	game->player.rotate_left = 0;
 	game->player.rotate_right = 0;
-	game->player.shift_pressed = 0;
 	game->player.x = game->map.player_x;
 	game->player.y = game->map.player_y;
 	set_dir(game);

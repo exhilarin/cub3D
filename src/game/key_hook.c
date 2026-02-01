@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/01 00:54:35 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/01 07:05:54 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ static int	key_press(int keycode, t_game *game)
 		game->player.rotate_left = 1;
 	else if (keycode == KEY_RIGHT)
 		game->player.rotate_right = 1;
-	else if (keycode == KEY_SHIFT)
-		game->player.shift_pressed = 1;
 	else if (keycode == KEY_ESC)
 		exit_game(game);
 	return (0);
@@ -47,8 +45,6 @@ static int	key_release(int keycode, t_game *game)
 		game->player.rotate_left = 0;
 	else if (keycode == KEY_RIGHT)
 		game->player.rotate_right = 0;
-	else if (keycode == KEY_SHIFT)
-		game->player.shift_pressed = 0;
 	return (0);
 }
 
