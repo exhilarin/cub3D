@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/01 09:54:38 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/01 21:47:48 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,12 @@ void	update_player_speed_bonus(t_game *game)
 	moving = game->player.move_forward || game->player.move_backward
 		|| game->player.move_left || game->player.move_right;
 	if (moving)
-		game->player.current_speed = game->player.move_speed;
+	{
+		if (game->player.shift_pressed)
+			game->player.current_speed = game->player.move_speed * SPRINT_FACTOR;
+		else
+			game->player.current_speed = game->player.move_speed * WALK_FACTOR;
+	}
 	else
 		game->player.current_speed = 0;
-	if (game->player.shift_pressed && moving)
-		game->player.current_speed *= SLOW_WALK_FACTOR;
 }

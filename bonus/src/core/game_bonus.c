@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/01 06:07:06 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/01 21:43:04 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,15 @@ void	game_loop_bonus(t_game *game)
 	mlx_loop(game->mlx);
 }
 
+static int	mouse_click_bonus(int button, int x, int y, t_game *game)
+{
+	(void)x;
+	(void)y;
+	if (button == 1)  /* Left mouse button */
+		trigger_door_bonus(game);
+	return (0);
+}
+
 static int	key_press_bonus(int keycode, t_game *game)
 {
 	if (keycode == KEY_W)
@@ -109,4 +118,5 @@ static void	key_hook_bonus(t_game *game)
 	mlx_hook(game->win, 2, 1L << 0, key_press_bonus, game);
 	mlx_hook(game->win, 3, 1L << 1, key_release_bonus, game);
 	mlx_hook(game->win, 6, 1L << 6, handle_mouse_move_bonus, game);
+	mlx_mouse_hook(game->win, mouse_click_bonus, game);
 }

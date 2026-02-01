@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/01 09:54:38 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/01 21:47:48 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	handle_mouse_move_bonus(int x, int y, t_game *game)
 	delta_x = x - game->player.last_mouse_x;
 	if (delta_x != 0)
 	{
-		rotation = delta_x * 0.0015;
+		rotation = delta_x * 0.0008;
 		old_dir_x = game->player.dir_x;
 		old_plane_x = game->player.plane_x;
 		game->player.dir_x = game->player.dir_x * cos(rotation)

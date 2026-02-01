@@ -6,23 +6,11 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/01 10:29:03 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/01 11:03:06 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d_bonus.h"
-
-int	check_solid_pokemon(t_game *game, int x, int y)
-{
-	char	cell;
-
-	if (x < 0 || y < 0 || y >= game->map.height || x >= game->map.width)
-		return (0);
-	cell = game->map.grid[y][x];
-	if (cell == DOOR_SNORLAX || cell == DOOR_CHARIZARD)
-		return (1);
-	return (0);
-}
 
 int	check_wall_bonus(t_game *game, int x, int y)
 {
@@ -30,8 +18,7 @@ int	check_wall_bonus(t_game *game, int x, int y)
 		return (0);
 	if (game->map.grid[y][x] == '1')
 		return (0);
-	/* Also check for solid Pokemon that should act like walls */
-	if (check_solid_pokemon(game, x, y))
+	if (game->map.grid[y][x] == DOOR_SNORLAX || game->map.grid[y][x] == DOOR_CHARIZARD)
 		return (0);
 	return (1);
 }
