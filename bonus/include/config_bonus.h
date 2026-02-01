@@ -31,6 +31,7 @@
 # define KEY_3 20
 # define KEY_SHIFT 65505
 
-# define SLOW_WALK_FACTOR 0.5
+# define SPRINT_FACTOR 1.2
+# define WALK_FACTOR 0.6
 
 #endif
