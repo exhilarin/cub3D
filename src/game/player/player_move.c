@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 23:08:20 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/01 07:05:54 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/01 09:26:21 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,23 +42,23 @@ static void	move_player(t_game *game)
 {
 	if (game->player.move_forward)
 	{
-		game->player.x += game->player.dir_x * game->player.current_speed;
-		game->player.y += game->player.dir_y * game->player.current_speed;
+		game->player.x += game->player.dir_x * game->player.move_speed;
+		game->player.y += game->player.dir_y * game->player.move_speed;
 	}
 	if (game->player.move_backward)
 	{
-		game->player.x -= game->player.dir_x * game->player.current_speed;
-		game->player.y -= game->player.dir_y * game->player.current_speed;
+		game->player.x -= game->player.dir_x * game->player.move_speed;
+		game->player.y -= game->player.dir_y * game->player.move_speed;
 	}
 	if (game->player.move_right)
 	{
-		game->player.x += game->player.plane_x * game->player.current_speed;
-		game->player.y += game->player.plane_y * game->player.current_speed;
+		game->player.x += game->player.plane_x * game->player.move_speed;
+		game->player.y += game->player.plane_y * game->player.move_speed;
 	}
 	if (game->player.move_left)
 	{
-		game->player.x -= game->player.plane_x * game->player.current_speed;
-		game->player.y -= game->player.plane_y * game->player.current_speed;
+		game->player.x -= game->player.plane_x * game->player.move_speed;
+		game->player.y -= game->player.plane_y * game->player.move_speed;
 	}
 }
 
@@ -66,16 +66,4 @@ void	update_player(t_game *game)
 {
 	move_player(game);
 	rotate_player(game);
-}
-
-void	update_player_speed(t_game *game)
-{
-	int	moving;
-
-	moving = game->player.move_forward || game->player.move_backward
-		|| game->player.move_left || game->player.move_right;
-	if (moving)
-		game->player.current_speed = game->player.move_speed;
-	else
-		game->player.current_speed = 0;
 }

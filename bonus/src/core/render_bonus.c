@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d_bonus.h"
+#include "../../include/cub3d_bonus.h"
 #include <string.h>
 
 typedef struct s_floor

@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/01 07:05:54 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/01 09:26:21 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,6 @@ void	init_player(t_game *game)
 {
 	game->player.move_speed = 0.05;
 	game->player.rotate_speed = 0.03;
-	game->player.current_speed = 0.0;
-	game->player.target_speed = 0.0;
 	game->player.move_forward = 0;
 	game->player.move_backward = 0;
 	game->player.move_left = 0;

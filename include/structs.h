@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/01 07:05:54 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/01 09:26:21 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,12 +96,8 @@ typedef struct s_player
 	double	dir_y;
 	double	plane_x;
 	double	plane_y;
-	double	new_x;
-	double	new_y;
 	double	move_speed;
 	double	rotate_speed;
-	double	current_speed;
-	double	target_speed;
 	int		move_forward;
 	int		move_backward;
 	int		move_left;

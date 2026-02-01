@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minimap_bonus.h                                    :+:      :+:    :+:   */
+/*   free_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/01 02:25:14 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/01 09:54:38 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIMAP_BONUS_H
-# define MINIMAP_BONUS_H
+#include "../include/cub3d_bonus.h"
 
-
-/* Minimap configuration - Pokemon Theme */
-# define MINIMAP_SIZE 200
-# define MINIMAP_MARGIN 20
-# define MINIMAP_BG_COLOR 0x90EE90
-# define MINIMAP_WALL_COLOR 0x228B22
-# define MINIMAP_PLAYER_COLOR 0xFF3030
-# define MINIMAP_PLAYER_SIZE 5
-# define MINIMAP_BORDER_COLOR 0x8B4513
-
-/* Minimap initialization and drawing functions */
-void	init_minimap(t_game *game, t_minimap *minimap);
-void	draw_minimap(t_game *game, t_minimap *minimap);
-void	draw_minimap_with_border(t_game *game, t_minimap *minimap);
-
-#endif
+/* Free bonus-specific resources (doors, pokemon, animations) */
+void	free_bonus_resources(t_game *game)
+{
+	free_doors_bonus(game);
+	free_pokemon_bonus(game);
+	if (game->anim.pokeball_img)
+		mlx_destroy_image(game->mlx, game->anim.pokeball_img);
+	if (game->anim.explosion_img)
+		mlx_destroy_image(game->mlx, game->anim.explosion_img);
+}

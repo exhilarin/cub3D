@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d_bonus.h"
+#include "../../include/cub3d_bonus.h"
 
 static int	check_file_extension(char *filename)
 {
