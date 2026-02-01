@@ -71,6 +71,10 @@
 # define DOOR_INTERACT_DIST 1.5
 # define POKEBALL_ANIM_FRAMES 20
 # define EXPLOSION_FRAMES 15
+# define FADE_SPEED 8
+# define MAX_ALPHA 255
+# define FADE_SPEED 8
+# define MAX_ALPHA 255
 # define POKEMON_ANIM_SPEED 0.05
 
 /* ==================== PARSING FUNCTIONS ==================== */

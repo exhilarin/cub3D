@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/01 10:29:03 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/01 22:48:48 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	init_animations_bonus(t_game *game)
 	game->anim.map_x = 0;
 	game->anim.map_y = 0;
 	game->anim.pokeball_img = NULL;
-	game->anim.explosion_img = NULL;
 	game->pokeball_hud.img = mlx_xpm_file_to_image(game->mlx,
 			"./assets/pokeball_01.xpm",
 			&game->pokeball_hud.width, &game->pokeball_hud.height);
@@ -49,15 +48,6 @@ void	update_animations_bonus(t_game *game)
 	{
 		game->anim.frame_count++;
 		if (game->anim.frame_count >= POKEBALL_ANIM_FRAMES)
-		{
-			game->anim.type = ANIM_EXPLOSION;
-			game->anim.frame_count = 0;
-		}
-	}
-	else if (game->anim.type == ANIM_EXPLOSION)
-	{
-		game->anim.frame_count++;
-		if (game->anim.frame_count >= EXPLOSION_FRAMES)
 		{
 			game->anim.type = ANIM_NONE;
 			game->anim.frame_count = 0;
