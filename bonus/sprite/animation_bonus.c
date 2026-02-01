@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/01 09:54:38 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/01 10:29:03 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ typedef struct s_pixel_pos
 	int	j;
 }	t_pixel_pos;
 
-/* Initialize animation system */
 void	init_animations_bonus(t_game *game)
 {
 	game->anim.type = ANIM_NONE;
@@ -44,7 +43,6 @@ void	init_animations_bonus(t_game *game)
 				&game->pokeball_hud.endian);
 }
 
-/* Update animations - advance frame counters */
 void	update_animations_bonus(t_game *game)
 {
 	if (game->anim.type == ANIM_POKEBALL)
@@ -67,7 +65,6 @@ void	update_animations_bonus(t_game *game)
 	}
 }
 
-/* Draw Pokeball animation in player's hand (HUD overlay) */
 void	draw_pokeball_animation(t_game *game)
 {
 	int		hud_x;
@@ -120,7 +117,6 @@ static void	draw_explosion_circle(t_game *game, t_explosion_draw *ex)
 	}
 }
 
-/* Draw transparent image (skip black/transparent pixels) */
 void	draw_transparent_image(t_game *game, t_img *img_data, int x, int y)
 {
 	int		i;
@@ -157,7 +153,6 @@ void	draw_transparent_image(t_game *game, t_img *img_data, int x, int y)
 	}
 }
 
-/* Draw explosion effect at door location (simple expanding circle) */
 void	draw_explosion_animation(t_game *game)
 {
 	t_explosion_draw	ex;

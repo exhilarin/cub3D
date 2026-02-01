@@ -34,10 +34,17 @@
 # define MINIMAP_SIZE 200
 # define MINIMAP_MARGIN 20
 # define MINIMAP_BG_COLOR 0x90EE90
-# define MINIMAP_WALL_COLOR 0x228B22
-# define MINIMAP_PLAYER_COLOR 0xFF3030
+# define MINIMAP_WALL_COLOR 0x228B50
+# define MINIMAP_PLAYER_COLOR 0xFF3050
 # define MINIMAP_PLAYER_SIZE 5
-# define MINIMAP_BORDER_COLOR 0x8B4513
+# define MINIMAP_BORDER_COLOR 0xFF5050
+
+/* Pokemon Colors for Minimap */
+# define MINIMAP_PIKACHU_COLOR 0xFFD450
+# define MINIMAP_SNORLAX_COLOR 0x4169E1
+# define MINIMAP_CHARIZARD_COLOR 0xFF8C00
+# define MINIMAP_POKEMON_SIZE 4
+# define MINIMAP_POKEMON_SIZE 4
 
 /* ==================== DOOR & POKEMON CONFIGURATION ==================== */
 # define SPRITE_POKEBALL "./assets/sprites/effects/pokeball.xpm"
@@ -129,6 +136,7 @@ void	draw_transparent_image(t_game *game, t_img *img, int x, int y);
 void	init_minimap(t_game *game, t_minimap *minimap);
 void	draw_minimap(t_game *game, t_minimap *minimap);
 void	draw_minimap_with_border(t_game *game, t_minimap *minimap);
+void	draw_pokemon_on_minimap(t_game *game, t_minimap *minimap);
 
 /* ==================== MOUSE FUNCTIONS ==================== */
 int		handle_mouse_move_bonus(int x, int y, t_game *game);

@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/01 09:54:38 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/01 10:29:03 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ typedef struct s_door_search
 	double	dist;
 }	t_door_search;
 
-/* Helper: Deactivate Pokemon at door location */
 static void	deactivate_pokemon_at(t_game *game, int x, int y)
 {
 	t_pokemon	*current;
@@ -64,7 +63,6 @@ static void	open_door(t_game *game, t_door *door)
 	remove_door_from_map(game, door->map_x, door->map_y);
 }
 
-/* Trigger door opening when player presses 'E' near a door */
 void	trigger_door_bonus(t_game *game)
 {
 	t_door			*door;
@@ -82,7 +80,6 @@ void	trigger_door_bonus(t_game *game)
 		open_door(game, search.closest);
 }
 
-/* Update door states */
 void	update_doors_bonus(t_game *game)
 {
 	t_door	*current;
@@ -96,7 +93,6 @@ void	update_doors_bonus(t_game *game)
 	}
 }
 
-/* Draw doors (rendered as walls in raycasting, placeholder here) */
 void	draw_doors_bonus(t_game *game)
 {
 	(void)game;
