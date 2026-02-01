@@ -6,11 +6,11 @@ C 				200,	 	 	100,200
 
 
 
-NO  	 	 	./textures/wall/front.xpm
- 		 	SO ./textures/wall/front.xpm
-EA  	 		 	 	 	 	 	 		 ./textures/wall/side.xpm
+NO  	 	 	./assets/textures/wall/front.xpm
+ 		 	SO ./assets/textures/wall/front.xpm
+EA  	 		 	 	 	 	 	 		 ./assets/textures/wall/side.xpm
 
-WE ./textures/wall/side.xpm
+WE ./assets/textures/wall/side.xpm
 F 100 	 	 , 	 	100	 	, 	 		 	 	100
 
 111

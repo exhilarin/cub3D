@@ -1,7 +1,7 @@
-NO ./textures/wall.xpm
-SO ./textures/wall.xpm
-WE ./textures/wall.xpm
-EA ./textures/wall.xpm
+NO ./assets/textures/wall.xpm
+SO ./assets/textures/wall.xpm
+WE ./assets/textures/wall.xpm
+EA ./assets/textures/wall.xpm
 
 F 79,127,31
 C 109,182,232
