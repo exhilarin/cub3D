@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d_bonus.h"
+#include "../../../include/cub3d_bonus.h"
 
 static char	*get_path(char *line, int i)
 {

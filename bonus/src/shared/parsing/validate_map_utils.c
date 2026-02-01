@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d_bonus.h"
+#include "../../../include/cub3d_bonus.h"
 
 static char	**create_visited_map(t_game *game)
 {

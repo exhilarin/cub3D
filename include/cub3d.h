@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 21:07:56 by ilyas-guney       #+#    #+#             */
-/*   Updated: 2026/02/01 00:54:35 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/01 09:26:21 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ void	init_mlx_display(t_game *game);
 void	init_mlx_image(t_game *game);
 void	load_texture(t_game *game, t_img *texture, char *path);
 void	load_textures(t_game *game);
-void	update_player_speed(t_game *game);
 
 /* --- Raycasting Functions --- */
 void	draw_walls(t_game *game);

@@ -6,11 +6,11 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/01 09:26:21 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/01 09:54:38 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../include/cub3d_bonus.h"
 
 static void	set_dir(t_game *game)
 {
@@ -64,12 +64,14 @@ void	init_player(t_game *game)
 {
 	game->player.move_speed = 0.05;
 	game->player.rotate_speed = 0.03;
+	game->player.current_speed = 0.0;
 	game->player.move_forward = 0;
 	game->player.move_backward = 0;
 	game->player.move_left = 0;
 	game->player.move_right = 0;
 	game->player.rotate_left = 0;
 	game->player.rotate_right = 0;
+	game->player.shift_pressed = 0;
 	game->player.x = game->map.player_x;
 	game->player.y = game->map.player_y;
 	set_dir(game);

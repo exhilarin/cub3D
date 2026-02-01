@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d_bonus.h"
+#include "../../../include/cub3d_bonus.h"
 
 static void	get_max_width(t_game *game)
 {

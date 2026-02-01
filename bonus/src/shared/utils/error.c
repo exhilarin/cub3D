@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d_bonus.h"
+#include "../../../include/cub3d_bonus.h"
 
 void	ft_perror(const char *str)
 {

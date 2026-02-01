@@ -115,7 +115,6 @@ typedef struct s_player
 	double	move_speed;
 	double	rotate_speed;
 	double	current_speed;
-	double	target_speed;
 	int		move_forward;
 	int		move_backward;
 	int		move_left;

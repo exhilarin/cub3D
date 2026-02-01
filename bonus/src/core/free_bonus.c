@@ -6,11 +6,11 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/01 02:25:14 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/01 09:54:39 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d_bonus.h"
+#include "../../include/cub3d_bonus.h"
 
 /* Free bonus-specific resources (doors, pokemon, animations) */
 void	free_bonus_resources(t_game *game)

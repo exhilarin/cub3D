@@ -6,12 +6,11 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/01 09:11:12 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/01 09:54:38 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d_bonus.h"
-#include "../entities/door_bonus.h"
+#include "../include/cub3d_bonus.h"
 
 /* Check if there's a solid Pokemon (Snorlax or Charizard) at given position */
 int	check_solid_pokemon(t_game *game, int x, int y)

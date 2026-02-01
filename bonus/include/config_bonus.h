@@ -31,8 +31,6 @@
 # define KEY_3 20
 # define KEY_SHIFT 65505
 
-# define ACCEL_RATE 0.003
-# define DECEL_RATE 0.005
 # define SLOW_WALK_FACTOR 0.5
 
 #endif

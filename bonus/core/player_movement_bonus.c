@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player_move.c                                      :+:      :+:    :+:   */
+/*   player_movement_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/19 23:08:20 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/01 09:26:21 by ilyas-guney      ###   ########.fr       */
+/*   Created: 2026/02/01 00:00:00 by iguney            #+#    #+#             */
+/*   Updated: 2026/02/01 09:54:38 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../include/cub3d_bonus.h"
 
 static void	rotate_player(t_game *game)
 {
@@ -40,30 +40,48 @@ static void	rotate_player(t_game *game)
 
 static void	move_player(t_game *game)
 {
+	game->player.new_x = game->player.x;
+	game->player.new_y = game->player.y;
 	if (game->player.move_forward)
 	{
-		game->player.x += game->player.dir_x * game->player.move_speed;
-		game->player.y += game->player.dir_y * game->player.move_speed;
+		game->player.new_x += game->player.dir_x * game->player.current_speed;
+		game->player.new_y += game->player.dir_y * game->player.current_speed;
 	}
 	if (game->player.move_backward)
 	{
-		game->player.x -= game->player.dir_x * game->player.move_speed;
-		game->player.y -= game->player.dir_y * game->player.move_speed;
+		game->player.new_x -= game->player.dir_x * game->player.current_speed;
+		game->player.new_y -= game->player.dir_y * game->player.current_speed;
 	}
 	if (game->player.move_right)
 	{
-		game->player.x += game->player.plane_x * game->player.move_speed;
-		game->player.y += game->player.plane_y * game->player.move_speed;
+		game->player.new_x += game->player.plane_x * game->player.current_speed;
+		game->player.new_y += game->player.plane_y * game->player.current_speed;
 	}
 	if (game->player.move_left)
 	{
-		game->player.x -= game->player.plane_x * game->player.move_speed;
-		game->player.y -= game->player.plane_y * game->player.move_speed;
+		game->player.new_x -= game->player.plane_x * game->player.current_speed;
+		game->player.new_y -= game->player.plane_y * game->player.current_speed;
 	}
+	if (collision_detection_bonus(game))
+		move_bonus(game);
 }
 
-void	update_player(t_game *game)
+void	update_player_bonus(t_game *game)
 {
 	move_player(game);
 	rotate_player(game);
+}
+
+void	update_player_speed_bonus(t_game *game)
+{
+	int	moving;
+
+	moving = game->player.move_forward || game->player.move_backward
+		|| game->player.move_left || game->player.move_right;
+	if (moving)
+		game->player.current_speed = game->player.move_speed;
+	else
+		game->player.current_speed = 0;
+	if (game->player.shift_pressed && moving)
+		game->player.current_speed *= SLOW_WALK_FACTOR;
 }
