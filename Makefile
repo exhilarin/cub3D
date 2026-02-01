@@ -59,12 +59,18 @@ BONUS_SRCS = \
 	bonus/src/core/render_bonus.c \
 	bonus/src/core/free_bonus.c \
 	bonus/minimap/minimap_bonus.c \
+	bonus/minimap/minimap_drawing_bonus.c \
+	bonus/minimap/minimap_player_bonus.c \
+	bonus/minimap/minimap_pokemon_bonus.c \
 	bonus/mouse/mouse_rotation_bonus.c \
 	bonus/collision/collisions_bonus.c \
 	bonus/collision/player_movement_bonus.c \
 	bonus/door/door_bonus.c \
 	bonus/door/door_interaction_bonus.c \
 	bonus/sprite/pokemon_bonus.c \
+	bonus/sprite/pokemon_loading_bonus.c \
+	bonus/sprite/pokemon_management_bonus.c \
+	bonus/sprite/pokemon_rendering_bonus.c \
 	bonus/sprite/animation_bonus.c \
 	bonus/src/shared/parsing/parse_file.c \
 	bonus/src/shared/parsing/parse_file_utils.c \

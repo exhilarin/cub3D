@@ -34,8 +34,10 @@
 # define MINIMAP_SIZE 200
 # define MINIMAP_MARGIN 20
 # define MINIMAP_BG_COLOR 0x90EE90
+# define MINIMAP_FLOOR_COLOR 0x90EE90
 # define MINIMAP_WALL_COLOR 0x228B50
 # define MINIMAP_PLAYER_COLOR 0xFF3050
+# define MINIMAP_DIRECTION_COLOR 0xFF3050
 # define MINIMAP_PLAYER_SIZE 5
 # define MINIMAP_BORDER_COLOR 0xFF5050
 
@@ -136,6 +138,18 @@ void	draw_transparent_image(t_game *game, t_img *img, int x, int y);
 void	init_minimap(t_game *game, t_minimap *minimap);
 void	draw_minimap(t_game *game, t_minimap *minimap);
 void	draw_minimap_with_border(t_game *game, t_minimap *minimap);
+
+/* Minimap Drawing Functions */
+void	put_pixel_minimap(t_game *game, int x, int y, int color);
+int		is_outer_wall(t_game *game, int mx, int my);
+void	draw_minimap_tile(t_game *game, t_minimap *mm, int mx, int my);
+
+/* Minimap Player Functions */
+void	draw_player_square(t_game *game, t_minimap *mm);
+void	draw_player_direction(t_game *game, t_minimap *mm);
+void	draw_player_on_minimap(t_game *game, t_minimap *mm);
+
+/* Minimap Pokemon Functions */
 void	draw_pokemon_on_minimap(t_game *game, t_minimap *minimap);
 
 /* ==================== MOUSE FUNCTIONS ==================== */
@@ -167,10 +181,17 @@ int		is_player_near_door(t_game *game, t_door *door);
 void	init_pokemon_bonus(t_game *game);
 void	update_pokemon_bonus(t_game *game);
 void	draw_pokemon_bonus(t_game *game);
+void	free_pokemon_bonus(t_game *game);
+
+/* Pokemon Loading Functions */
+void	load_pikachu_frames(t_game *game, t_pokemon *poke);
+void	load_snorlax_frames(t_game *game, t_pokemon *poke);
+void	load_charizard_frames(t_game *game, t_pokemon *poke);
+
+/* Animation Functions */
 void	update_animations_bonus(t_game *game);
 void	init_animations_bonus(t_game *game);
 void	draw_explosion_animation(t_game *game);
 void	draw_pokeball_animation(t_game *game);
-void	free_pokemon_bonus(t_game *game);
 
 #endif
