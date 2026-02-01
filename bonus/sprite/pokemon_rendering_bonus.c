@@ -170,7 +170,7 @@ void	draw_pokemon_bonus(t_game *game)
 	current = game->pokemons;
 	while (current)
 	{
-		if (current->active && current->alpha > 0)
+		if ((current->active || current->fading > 0) && current->alpha > 0)
 		{
 			sprite_x = current->map_x + 0.5 - game->player.x;
 			sprite_y = current->map_y + 0.5 - game->player.y;
