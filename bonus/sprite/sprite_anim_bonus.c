@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/02 02:17:17 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/02 15:35:27 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	init_animations_bonus(t_game *game)
 	game->anim.map_y = 0;
 	game->anim.pokeball_img = NULL;
 	game->pokeball_hud.img = mlx_xpm_file_to_image(game->mlx,
-			"./assets/sprites/pokeball/pokeball_01.xpm",
+			"./assets/sprites/pokeball/frame_0_delay-0.2s.xpm",
 			&game->pokeball_hud.width, &game->pokeball_hud.height);
 	if (game->pokeball_hud.img)
 		game->pokeball_hud.addr = mlx_get_data_addr(game->pokeball_hud.img,
@@ -52,6 +52,25 @@ void	update_animations_bonus(t_game *game)
 			game->anim.type = ANIM_NONE;
 			game->anim.frame_count = 0;
 		}
+	}
+}
+
+void	draw_pokeball_animation(t_game *game)
+{
+	int		hud_x;
+	int		hud_y;
+	int		offset;
+
+	if (game->anim.type != ANIM_POKEBALL)
+		return ;
+	hud_x = LENGHT - 150;
+	hud_y = HEIGHT - 150;
+	offset = game->anim.frame_count * 2;
+	hud_y -= offset;
+	if (game->anim.pokeball_img)
+	{
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->anim.pokeball_img, hud_x, hud_y);
 	}
 }
 

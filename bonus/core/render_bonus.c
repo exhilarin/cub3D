@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/01 22:48:48 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/02 15:42:50 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,5 +144,6 @@ void	render_frame_bonus(t_game *game)
 	draw_pokeball_animation(game);
 	draw_transparent_image(game, &game->pokeball_hud,
 		LENGHT - game->pokeball_hud.width, HEIGHT - game->pokeball_hud.height);
-	mlx_put_image_to_window(game->mlx, game->win, game->image, 0, 0);
+	if (game->image && game->mlx && game->win)
+		mlx_put_image_to_window(game->mlx, game->win, game->image, 0, 0);
 }

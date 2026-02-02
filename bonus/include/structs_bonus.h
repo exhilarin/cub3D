@@ -192,8 +192,6 @@ typedef struct s_anim
 	int			map_y;
 	void		*pokeball_img;
 	void		*explosion_img;
-	t_img		pokeball_frames[7];
-	int			current_pokeball_frame;
 }	t_anim;
 
 typedef struct s_game
