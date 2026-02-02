@@ -72,6 +72,7 @@ BONUS_SRCS = \
 	bonus/sprite/pokemon_management_bonus.c \
 	bonus/sprite/pokemon_rendering_bonus.c \
 	bonus/sprite/animation_bonus.c \
+	bonus/sprite/hand_anim_bonus.c \
 	bonus/src/shared/parsing/parse_file.c \
 	bonus/src/shared/parsing/parse_file_utils.c \
 	bonus/src/shared/parsing/parse_textures.c \

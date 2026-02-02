@@ -25,6 +25,7 @@
 # define KEY_LEFT 65361
 # define KEY_RIGHT 65363
 # define KEY_ESC 65307
+# define KEY_E 101
 
 # define KEY_1 18
 # define KEY_2 19
@@ -33,5 +34,8 @@
 
 # define SPRINT_FACTOR 1.2
 # define WALK_FACTOR 0.6
+
+# define HAND_FRAMES 8
+# define HAND_FRAME_DELAY 0.15
 
 #endif

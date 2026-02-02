@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/02 16:18:44 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/02 16:33:55 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	init_animations_bonus(t_game *game)
 		game->pokeball_hud.addr = mlx_get_data_addr(game->pokeball_hud.img,
 				&game->pokeball_hud.bpp, &game->pokeball_hud.line_lenght,
 				&game->pokeball_hud.endian);
+	load_hand_frames(game);
 }
 
 void	update_animations_bonus(t_game *game)
@@ -196,3 +197,4 @@ void	draw_scaled_transparent_image(t_game *game, t_img *img_data,
 		i++;
 	}
 }
+
