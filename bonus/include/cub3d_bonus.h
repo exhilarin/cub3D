@@ -33,13 +33,13 @@
 /* ==================== MINIMAP CONFIGURATION ==================== */
 # define MINIMAP_SIZE 200
 # define MINIMAP_MARGIN 20
-# define MINIMAP_BG_COLOR 0x90EE90
-# define MINIMAP_FLOOR_COLOR 0x90EE90
-# define MINIMAP_WALL_COLOR 0x228B50
+# define MINIMAP_BG_COLOR 0xD8D8D8
+# define MINIMAP_FLOOR_COLOR 0xD8D8D8
+# define MINIMAP_WALL_COLOR 0x202020
 # define MINIMAP_PLAYER_COLOR 0xFF3050
 # define MINIMAP_DIRECTION_COLOR 0xFF3050
 # define MINIMAP_PLAYER_SIZE 5
-# define MINIMAP_BORDER_COLOR 0xFF5050
+# define MINIMAP_BORDER_COLOR 0xCC0000
 
 /* Pokemon Colors for Minimap */
 # define MINIMAP_PIKACHU_COLOR 0xFFD450
@@ -55,7 +55,7 @@
 # define SPRITE_SNORLAX "./assets/sprites/pokemon/snorlax/"
 # define SPRITE_CHARIZARD "./assets/sprites/pokemon/charizard/"
 
-# define DOOR_PIKACHU 'P'
+# define DOOR_PIKACHU 'N'
 # define DOOR_SNORLAX 'X'
 # define DOOR_CHARIZARD 'C'
 
@@ -204,5 +204,9 @@ void	load_hand_frames(t_game *game);
 void	trigger_hand_animation(t_game *game);
 void	update_hand_animation(t_game *game);
 void	draw_hand_hud(t_game *game);
+
+/* Pokemon Counter HUD Functions */
+void	init_pokemon_counter_hud_bonus(t_game *game);
+void	draw_pokemon_counter_hud_bonus(t_game *game);
 
 #endif

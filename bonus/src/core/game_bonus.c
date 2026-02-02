@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/02 16:33:55 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/02 20:45:24 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,10 @@ static int	mouse_click_bonus(int button, int x, int y, t_game *game)
 	(void)x;
 	(void)y;
 	if (button == 1)  /* Left mouse button */
+	{
+		trigger_hand_animation(game);
 		trigger_door_bonus(game);
+	}
 	return (0);
 }
 

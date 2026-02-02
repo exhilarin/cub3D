@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/02 17:49:11 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/02 19:56:09 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	init_animations_bonus(t_game *game)
 				&game->pokeball_hud.bpp, &game->pokeball_hud.line_lenght,
 				&game->pokeball_hud.endian);
 	load_hand_frames(game);
+	init_pokemon_counter_hud_bonus(game);
 }
 
 void	update_animations_bonus(t_game *game)
