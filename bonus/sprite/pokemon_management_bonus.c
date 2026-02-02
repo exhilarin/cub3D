@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../include/cub3d_bonus.h"
+#include <sys/time.h>
 
 void	init_pokemon_bonus(t_game *game)
 {
@@ -30,8 +31,7 @@ void	init_pokemon_bonus(t_game *game)
 		new_poke->map_y = door->map_y;
 		new_poke->anim_offset = 0;
 		new_poke->active = 1;
-		new_poke->fading = 0;
-		new_poke->alpha = MAX_ALPHA;
+		new_poke->fading = 0;	new_poke->fade_start_time = 0.0;		new_poke->alpha = MAX_ALPHA;
 		new_poke->sprite = NULL;
 		new_poke->current_frame = 0;
 		poke_type = get_pokemon_type(game->map.grid[door->map_y][door->map_x]);
@@ -58,13 +58,24 @@ void	init_pokemon_bonus(t_game *game)
 
 void	update_pokemon_bonus(t_game *game)
 {
-	t_pokemon	*current;
+	t_pokemon		*current;
+	struct timeval	tv;
+	double			current_time;
+	double			elapsed;
 
+	gettimeofday(&tv, NULL);
+	current_time = tv.tv_sec + tv.tv_usec / 1000000.0;
 	current = game->pokemons;
 	while (current)
 	{
 		if (current->fading == 1)
 		{
+			elapsed = current_time - current->fade_start_time;
+			if (elapsed < 0.45)
+			{
+				current = current->next;
+				continue ;
+			}
 			current->alpha -= FADE_SPEED;
 			if (current->alpha <= 0)
 			{
@@ -75,6 +86,12 @@ void	update_pokemon_bonus(t_game *game)
 		}
 		else if (current->fading == 2)
 		{
+			elapsed = current_time - current->fade_start_time;
+			if (elapsed < 0.45)
+			{
+				current = current->next;
+				continue ;
+			}
 			if (current->alpha == 0)
 				current->alpha = FADE_SPEED;
 			else

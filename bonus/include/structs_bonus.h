@@ -178,6 +178,7 @@ typedef struct s_pokemon
 	int					alpha;
 	int					pokemon_type;
 	int					current_frame;
+	double				fade_start_time;
 	t_img				pikachu_frames[PIKACHU_FRAMES];
 	t_img				snorlax_frames[SNORLAX_FRAMES];
 	t_img				charizard_frames[CHARIZARD_FRAMES];

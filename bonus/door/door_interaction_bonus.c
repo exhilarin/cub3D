@@ -6,11 +6,12 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/01 23:23:25 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/02 17:04:40 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d_bonus.h"
+#include <sys/time.h>
 
 typedef struct s_door_search
 {
@@ -27,7 +28,9 @@ static void	deactivate_pokemon_at(t_game *game, int x, int y)
 	char		cell;
 	int			player_x;
 	int			player_y;
+	struct timeval	tv;
 
+	gettimeofday(&tv, NULL);
 	player_x = (int)game->player.x;
 	player_y = (int)game->player.y;
 	current = game->pokemons;
@@ -38,11 +41,13 @@ static void	deactivate_pokemon_at(t_game *game, int x, int y)
 			if (current->active)
 			{
 				current->fading = 1;
+				current->fade_start_time = tv.tv_sec + tv.tv_usec / 1000000.0;
 				game->map.grid[y][x] = '0';
 			}
 			else if (player_x != x || player_y != y)
 			{
 				current->fading = 2;
+				current->fade_start_time = tv.tv_sec + tv.tv_usec / 1000000.0;
 				if (current->pokemon_type == POKEMON_PIKACHU)
 					cell = 'P';
 				else if (current->pokemon_type == POKEMON_SNORLAX)
