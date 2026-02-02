@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 15:54:00 by agedikog          #+#    #+#             */
-/*   Updated: 2026/02/01 04:16:44 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/02 15:42:50 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,7 @@ void	init_data(t_game *game)
 	init_game(game);
 	init_texture(&game->textures);
 	init_map(&game->map);
+	init_texture_img(&game->pokeball_hud);
+	game->doors = NULL;
+	game->pokemons = NULL;
 }
