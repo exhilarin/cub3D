@@ -26,6 +26,7 @@
 # define KEY_RIGHT 65363
 # define KEY_ESC 65307
 # define KEY_E 101
+# define KEY_SPACE 32
 
 # define KEY_1 18
 # define KEY_2 19

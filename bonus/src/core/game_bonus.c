@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/02 20:45:24 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/02 22:25:59 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ static void	key_hook_bonus(t_game *game);
 void	game_loop_bonus(t_game *game)
 {
 	init_mlx_bonus(game);
+	game->intro_active = 1;
+	load_intro_screen_bonus(game);
 	init_player(game);
 	init_minimap(game, &game->minimap);
 	init_doors_bonus(game);
@@ -76,6 +78,11 @@ static int	mouse_click_bonus(int button, int x, int y, t_game *game)
 
 static int	key_press_bonus(int keycode, t_game *game)
 {
+	if (keycode == KEY_SPACE && game->intro_active)
+	{
+		start_game_bonus(game);
+		return (0);
+	}
 	if (keycode == KEY_W)
 		game->player.move_forward = 1;
 	else if (keycode == KEY_S)

@@ -58,6 +58,7 @@ BONUS_SRCS = \
 	bonus/src/core/game_bonus.c \
 	bonus/src/core/render_bonus.c \
 	bonus/src/core/free_bonus.c \
+	bonus/core/intro_screen_bonus.c \
 	bonus/minimap/minimap_bonus.c \
 	bonus/minimap/minimap_drawing_bonus.c \
 	bonus/minimap/minimap_player_bonus.c \
