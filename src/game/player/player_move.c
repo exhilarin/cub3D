@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 23:08:20 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/01 09:26:21 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/02 22:26:38 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ static void	rotate_player(t_game *game)
 	old_dir_x = game->player.dir_x;
 	old_plane_x = game->player.plane_x;
 	if (game->player.rotate_left)
-		rotation_speed -= game->player.rotate_speed;
-	if (game->player.rotate_right)
 		rotation_speed += game->player.rotate_speed;
+	if (game->player.rotate_right)
+		rotation_speed -= game->player.rotate_speed;
 	if (rotation_speed != 0)
 	{
 		game->player.dir_x = game->player.dir_x * cos(rotation_speed)

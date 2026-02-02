@@ -209,4 +209,9 @@ void	draw_hand_hud(t_game *game);
 void	init_pokemon_counter_hud_bonus(t_game *game);
 void	draw_pokemon_counter_hud_bonus(t_game *game);
 
+/* ==================== INTRO SCREEN FUNCTIONS ==================== */
+void	load_intro_screen_bonus(t_game *game);
+void	show_intro_screen_bonus(t_game *game);
+void	start_game_bonus(t_game *game);
+
 #endif

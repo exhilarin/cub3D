@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/02 19:56:09 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/02 22:25:59 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,11 @@ void	draw_floor_ceiling_bonus(t_game *game)
 
 void	render_frame_bonus(t_game *game)
 {
+	if (game->intro_active)
+	{
+		show_intro_screen_bonus(game);
+		return ;
+	}
 	update_player_speed_bonus(game);
 	update_player_bonus(game);
 	update_doors_bonus(game);

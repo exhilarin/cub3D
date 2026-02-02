@@ -222,6 +222,8 @@ typedef struct s_game
 	double		hand_last_time;
 	int			total_pokemon;
 	int			collected_pokemon;
+	int			intro_active;
+	t_img		intro_screen;
 }	t_game;
 
 #endif
