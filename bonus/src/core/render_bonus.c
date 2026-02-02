@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/02 15:44:50 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/02 16:18:44 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,8 @@ void	render_frame_bonus(t_game *game)
 	draw_pokeball_animation(game);
 	draw_explosion_animation(game);
 	draw_minimap_with_border(game, &game->minimap);
-	draw_transparent_image(game, &game->pokeball_hud,
-		LENGHT - game->pokeball_hud.width, HEIGHT - game->pokeball_hud.height);
+	draw_scaled_transparent_image(game, &game->pokeball_hud,
+		LENGHT - (int)(game->pokeball_hud.width * 1.1) - 30,
+		HEIGHT - (int)(game->pokeball_hud.height * 1.1), 1.1);
 	mlx_put_image_to_window(game->mlx, game->win, game->image, 0, 0);
 }
