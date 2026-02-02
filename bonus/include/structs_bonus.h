@@ -220,6 +220,8 @@ typedef struct s_game
 	int			hand_animating;
 	int			hand_current_frame;
 	double		hand_last_time;
+	int			total_pokemon;
+	int			collected_pokemon;
 }	t_game;
 
 #endif

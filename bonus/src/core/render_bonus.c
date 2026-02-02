@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/02 17:49:11 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/02 19:56:09 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,4 +147,5 @@ void	render_frame_bonus(t_game *game)
 	draw_minimap_with_border(game, &game->minimap);
 	draw_hand_hud(game);
 	mlx_put_image_to_window(game->mlx, game->win, game->image, 0, 0);
+	draw_pokemon_counter_hud_bonus(game);
 }

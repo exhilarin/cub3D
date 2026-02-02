@@ -21,6 +21,8 @@ void	init_pokemon_bonus(t_game *game)
 	int			poke_type;
 
 	game->pokemons = NULL;
+	game->total_pokemon = 0;
+	game->collected_pokemon = 0;
 	door = game->doors;
 	while (door)
 	{
@@ -52,6 +54,7 @@ void	init_pokemon_bonus(t_game *game)
 				current = current->next;
 			current->next = new_poke;
 		}
+		game->total_pokemon++;
 		door = door->next;
 	}
 }
@@ -82,6 +85,8 @@ void	update_pokemon_bonus(t_game *game)
 				current->active = 0;
 				current->alpha = 0;
 				current->fading = 0;
+				if (game->collected_pokemon < game->total_pokemon)
+					game->collected_pokemon++;
 			}
 		}
 		else if (current->fading == 2)
@@ -98,6 +103,8 @@ void	update_pokemon_bonus(t_game *game)
 				current->alpha += FADE_SPEED;
 			if (current->alpha >= MAX_ALPHA)
 			{
+				if (game->collected_pokemon > 0)
+					game->collected_pokemon--;
 				current->active = 1;
 				current->alpha = MAX_ALPHA;
 				current->fading = 0;
