@@ -55,7 +55,7 @@
 # define SPRITE_SNORLAX "./assets/sprites/pokemon/snorlax/"
 # define SPRITE_CHARIZARD "./assets/sprites/pokemon/charizard/"
 
-# define DOOR_PIKACHU 'N'
+# define DOOR_PIKACHU 'P'
 # define DOOR_SNORLAX 'X'
 # define DOOR_CHARIZARD 'C'
 
