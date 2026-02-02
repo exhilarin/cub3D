@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/01 09:26:21 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/02 21:25:34 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,23 +40,23 @@ static void	set_plane(t_game *game)
 {
 	if (game->map.player_dir == 'N')
 	{
-		game->player.plane_x = FOV;
+		game->player.plane_x = -FOV;
 		game->player.plane_y = 0;
 	}
 	else if (game->map.player_dir == 'S')
 	{
-		game->player.plane_x = -FOV;
+		game->player.plane_x = FOV;
 		game->player.plane_y = 0;
 	}
 	else if (game->map.player_dir == 'E')
 	{
 		game->player.plane_x = 0;
-		game->player.plane_y = FOV;
+		game->player.plane_y = -FOV;
 	}
 	else if (game->map.player_dir == 'W')
 	{
 		game->player.plane_x = 0;
-		game->player.plane_y = -FOV;
+		game->player.plane_y = FOV;
 	}
 }
 

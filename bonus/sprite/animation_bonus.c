@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/02 19:56:09 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/02 20:48:53 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,6 @@ void	init_animations_bonus(t_game *game)
 	game->anim.map_x = 0;
 	game->anim.map_y = 0;
 	game->anim.pokeball_img = NULL;
-	game->pokeball_hud.img = mlx_xpm_file_to_image(game->mlx,
-			"./assets/sprites/pokeball/frame_0_delay-0.2s.xpm",
-			&game->pokeball_hud.width, &game->pokeball_hud.height);
-	if (game->pokeball_hud.img)
-		game->pokeball_hud.addr = mlx_get_data_addr(game->pokeball_hud.img,
-				&game->pokeball_hud.bpp, &game->pokeball_hud.line_lenght,
-				&game->pokeball_hud.endian);
 	load_hand_frames(game);
 	init_pokemon_counter_hud_bonus(game);
 }
