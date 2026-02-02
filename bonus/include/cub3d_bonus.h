@@ -138,6 +138,8 @@ void	init_mlx_bonus(t_game *game);
 void	load_textures_bonus(t_game *game);
 void	free_bonus_resources(t_game *game);
 void	draw_transparent_image(t_game *game, t_img *img, int x, int y);
+void	draw_scaled_transparent_image(t_game *game, t_img *img, int x, int y,
+			float scale);
 
 /* ==================== MINIMAP FUNCTIONS ==================== */
 void	init_minimap(t_game *game, t_minimap *minimap);

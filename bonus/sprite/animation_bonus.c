@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 00:00:00 by iguney            #+#    #+#             */
-/*   Updated: 2026/02/02 15:49:54 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/02 16:18:44 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	init_animations_bonus(t_game *game)
 	game->anim.map_y = 0;
 	game->anim.pokeball_img = NULL;
 	game->pokeball_hud.img = mlx_xpm_file_to_image(game->mlx,
-			"./assets/sprites/pokeball/pokeball_01.xpm",
+			"./assets/sprites/pokeball/frame_0_delay-0.2s.xpm",
 			&game->pokeball_hud.width, &game->pokeball_hud.height);
 	if (game->pokeball_hud.img)
 		game->pokeball_hud.addr = mlx_get_data_addr(game->pokeball_hud.img,
@@ -154,4 +154,45 @@ void	draw_explosion_animation(t_game *game)
 	ex.radius = game->anim.frame_count * 5;
 	ex.color = 0xFF6600 - (game->anim.frame_count * 10 << 16);
 	draw_explosion_circle(game, &ex);
+}
+
+void	draw_scaled_transparent_image(t_game *game, t_img *img_data,
+		int x, int y, float scale)
+{
+	int		i;
+	int		j;
+	int		color;
+	char	*pixel;
+	char	*dst;
+	int		scaled_w;
+	int		scaled_h;
+
+	if (!img_data || !img_data->img || !img_data->addr)
+		return ;
+	scaled_w = (int)(img_data->width * scale);
+	scaled_h = (int)(img_data->height * scale);
+	i = 0;
+	while (i < scaled_h)
+	{
+		j = 0;
+		while (j < scaled_w)
+		{
+			pixel = img_data->addr + ((int)(i / scale) * img_data->line_lenght
+					+ (int)(j / scale) * (img_data->bpp / 8));
+			color = *(unsigned int *)pixel;
+			if ((color & 0x00FFFFFF) != 0x00000000)
+			{
+				if (y + i >= 0 && y + i < HEIGHT
+					&& x + j >= 0 && x + j < LENGHT)
+				{
+					dst = game->img_addr.addr + ((y + i)
+							* game->img_addr.line_lenght + (x + j)
+							* (game->img_addr.bpp / 8));
+					*(unsigned int *)dst = color;
+				}
+			}
+			j++;
+		}
+		i++;
+	}
 }
