@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 15:54:00 by agedikog          #+#    #+#             */
-/*   Updated: 2026/02/02 15:42:50 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2026/02/02 16:42:25 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,21 @@ static void	init_map(t_map *map)
 
 void	init_data(t_game *game)
 {
+	int	i;
+
 	init_game(game);
 	init_texture(&game->textures);
 	init_map(&game->map);
 	init_texture_img(&game->pokeball_hud);
+	i = 0;
+	while (i < HAND_FRAMES)
+	{
+		init_texture_img(&game->hand_frames[i]);
+		i++;
+	}
+	game->hand_animating = 0;
+	game->hand_current_frame = 0;
+	game->hand_last_time = 0.0;
 	game->doors = NULL;
 	game->pokemons = NULL;
 }

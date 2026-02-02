@@ -215,6 +215,10 @@ typedef struct s_game
 	char		*map_path;
 	char		*addres;
 	t_img		pokeball_hud;
+	t_img		hand_frames[HAND_FRAMES];
+	int			hand_animating;
+	int			hand_current_frame;
+	double		hand_last_time;
 }	t_game;
 
 #endif

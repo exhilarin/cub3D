@@ -200,5 +200,9 @@ void	update_animations_bonus(t_game *game);
 void	init_animations_bonus(t_game *game);
 void	draw_explosion_animation(t_game *game);
 void	draw_pokeball_animation(t_game *game);
+void	load_hand_frames(t_game *game);
+void	trigger_hand_animation(t_game *game);
+void	update_hand_animation(t_game *game);
+void	draw_hand_hud(t_game *game);
 
 #endif
