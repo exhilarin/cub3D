@@ -9,8 +9,9 @@ GNL_DIR     = library/gnl
 MLX_DIR     = library/minilibx-linux
 
 CC          = cc
-CFLAGS      = -Wall -Wextra -Werror -g
-MLX_FLAGS   = -L$(MLX_DIR) -lmlx -L/usr/include/../lib -lXext -lX11 -lm -lbsd
+CFLAGS      = -Wall -Wextra -Werror -g -std=gnu17
+LIBBSD      = $(shell echo "int main(void){return 0;}" | $(CC) -x c - -lbsd -o /dev/null 2>/dev/null && echo -lbsd)
+MLX_FLAGS   = -L$(MLX_DIR) -lmlx -L/usr/include/../lib -lXext -lX11 -lm $(LIBBSD)
 
 LIBFT       = $(LIBFT_DIR)/libft.a
 MLX         = $(MLX_DIR)/libmlx.a
@@ -144,7 +145,7 @@ $(LIBFT):
 	@$(MAKE) -s -C $(LIBFT_DIR)
 
 $(MLX):
-	@$(MAKE) -s -C $(MLX_DIR)
+	@$(MAKE) -s -C $(MLX_DIR) CC="$(CC) -std=gnu17" || test -f $(MLX)
 
 # Cleanup
 clean:
